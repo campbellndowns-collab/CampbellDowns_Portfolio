@@ -4,7 +4,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Resume — Campbell Downs</title>
-    <meta name="description" content="Resume for Campbell Downs. File coming soon." />
+    <meta name="description" content="Resume for Campbell Downs, Purdue Aeronautics and Astronautics." />
     <link rel="canonical" href="https://www.campbelldowns.com/resume.html" />
     <link rel="icon" href="assets/favicon.svg" type="image/svg+xml" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -26,19 +26,53 @@
         <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav">Menu</button>
         <nav class="nav" id="site-nav">
           <a href="index.html#work">Work</a>
-          <a href="index.html#about">About</a>
+          <a href="index.html#about">Profile</a>
           <a href="resume.html" aria-current="page">Resume</a>
           <a href="index.html#contact">Contact</a>
-          <a href="assets/Campbell-Downs-CAD-Portfolio.pdf">Deck PDF</a>
         </nav>
       </div>
     </header>
 
-    <main id="main" class="wrap section blank-sheet">
-      <div>
-        <p class="blank-mark">Blank</p>
+    <main id="main" class="wrap section">
+      <header class="page-title" style="padding-top: 0">
+        <span class="num">Curriculum vitae</span>
         <h1>Resume</h1>
-        <p>This page is a placeholder. The resume file will be posted here when it is ready.</p>
+        <p>
+          The résumé is maintained in Overleaf. This page shows the latest public PDF
+          when one is available. Overleaf does not provide a public live-PDF link, so
+          the file is loaded from this site or from a public URL in
+          <code>js/site-config.js</code>.
+        </p>
+        <div class="resume-actions" data-resume-actions></div>
+      </header>
+
+      <div class="resume-frame-wrap">
+        <iframe
+          class="resume-frame"
+          data-resume-frame
+          title="Campbell Downs resume"
+          hidden
+        ></iframe>
+        <div class="card" data-resume-fallback style="margin: 1rem; box-shadow: none">
+          <h3>PDF not published yet</h3>
+          <p>
+            To keep this page current without editing HTML each time, pick one of these:
+          </p>
+          <ul>
+            <li>
+              Export the Overleaf PDF to <code>assets/resume.pdf</code> in this repo
+              (simplest; update that file when the résumé changes).
+            </li>
+            <li>
+              Put the PDF on Google Drive or Dropbox with a public link, then set
+              <code>resumePdf</code> in <code>js/site-config.js</code>.
+            </li>
+            <li>
+              Set <code>resumeOverleaf</code> to your Overleaf read-only share link if
+              you want a source shortcut. Recruiters still need a PDF, not the editor.
+            </li>
+          </ul>
+        </div>
       </div>
     </main>
 
@@ -48,6 +82,8 @@
         <span>© <span data-year></span> Campbell Downs · <span class="host-mark" data-host-mark>.g / .v</span></span>
       </div>
     </footer>
+    <script src="js/site-config.js"></script>
     <script src="js/site.js"></script>
+    <script src="js/resume.js"></script>
   </body>
 </html>
