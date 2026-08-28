@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Double-Wall Mug Thermal Analysis — Campbell Downs</title>
+    <meta
+      name="description"
+      content="Transient thermal and nonlinear stress simulation for a ceramic and stainless double-wall mug, with fillet-driven stress reduction."
+    />
+    <link rel="icon" href="../assets/favicon.svg" type="image/svg+xml" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Instrument+Serif&family=Source+Sans+3:wght@400;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="../css/styles.css" />
+  </head>
+  <body>
+    <a class="skip" href="#main">Skip to content</a>
+    <header class="site-header">
+      <div class="wrap header-inner">
+        <a class="mark" href="../index.html">
+          <span class="mark-id">CD-03</span>
+          <span class="mark-name">Campbell Downs</span>
+        </a>
+        <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav">Menu</button>
+        <nav class="nav" id="site-nav">
+          <a href="../index.html#work" aria-current="page">Work</a>
+          <a href="../index.html#about">About</a>
+          <a href="../index.html#contact">Contact</a>
+          <a href="../assets/Campbell-Downs-CAD-Portfolio.pdf">Deck PDF</a>
+        </nav>
+      </div>
+    </header>
+
+    <header class="wrap page-title">
+      <span class="num">Project 03 · CAD + Analysis</span>
+      <h1>Double-Wall Mug Thermal Analysis</h1>
+      <p>Transient thermal and nonlinear stress simulation for a double-wall insulated mug.</p>
+      <div class="tags">
+        <span class="tag">Thermal FEA</span>
+        <span class="tag">Nonlinear stress</span>
+        <span class="tag">Fillets</span>
+      </div>
+    </header>
+
+    <figure class="hero-figure">
+      <img src="../assets/images/mug-thermal-hero.jpg" alt="Transient thermal plot of the double-wall mug" />
+      <figcaption>Case A thermal field after air convection on the outer surfaces.</figcaption>
+    </figure>
+
+    <main id="main">
+      <section class="section">
+        <div class="wrap">
+          <article class="card">
+            <p>
+              Modeled a two-layer mug with a ceramic outer shell, stainless steel inner
+              liner, and insulating air gap. Simulations evaluated cooling and thermal
+              stress under different convection conditions.
+            </p>
+          </article>
+          <div class="figure-grid two" style="margin-top: 1rem">
+            <figure class="figure">
+              <img src="../assets/images/mug-case-a.jpg" alt="Case A air convection thermal plot" />
+              <figcaption>Case A: 40°F air convection.</figcaption>
+            </figure>
+            <figure class="figure">
+              <img src="../assets/images/mug-case-b.jpg" alt="Case B water convection thermal plot" />
+              <figcaption>Case B: 50°F water convection.</figcaption>
+            </figure>
+          </div>
+          <article class="card" style="margin-top: 1rem">
+            <h3>Simulation setup</h3>
+            <ul>
+              <li>Initial mug temperature: 175°F</li>
+              <li>300-second transient thermal study</li>
+              <li>5-second nonlinear stress time step</li>
+              <li>Outer surfaces exposed to convection</li>
+            </ul>
+          </article>
+          <div class="metrics five" style="margin-top: 1rem">
+            <div class="stat"><b>23</b><span>W/m²K air convection</span></div>
+            <div class="stat"><b>350</b><span>W/m²K water convection</span></div>
+            <div class="stat"><b>300 s</b><span>Study duration</span></div>
+            <div class="stat"><b>304 SS</b><span>Inner liner</span></div>
+            <div class="stat"><b>Ceramic</b><span>Outer shell</span></div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="wrap">
+          <div class="section-head">
+            <h2>Stress concentration reduction</h2>
+            <p>Geometry changes were used to reduce thermally induced stress peaks.</p>
+          </div>
+          <div class="figure-grid two">
+            <figure class="figure">
+              <img src="../assets/images/mug-stress-a.jpg" alt="Baseline thermal stress, Case A" />
+              <figcaption>Baseline stress, Case A.</figcaption>
+            </figure>
+            <figure class="figure">
+              <img src="../assets/images/mug-stress-b.jpg" alt="Baseline thermal stress, Case B" />
+              <figcaption>Baseline stress, Case B.</figcaption>
+            </figure>
+            <figure class="figure">
+              <img src="../assets/images/mug-liner-initial.jpg" alt="Initial inner liner cross-section" />
+              <figcaption>Initial liner.</figcaption>
+            </figure>
+            <figure class="figure">
+              <img src="../assets/images/mug-liner-updated.jpg" alt="Updated inner liner with thicker lip and fillets" />
+              <figcaption>Updated liner.</figcaption>
+            </figure>
+          </div>
+          <article class="card takeaway" style="margin-top: 1rem">
+            <h3>Design changes</h3>
+            <p>
+              Doubled the inner-liner lip thickness and added fillets at the liner base
+              to reduce sharp stress concentration locations.
+            </p>
+          </article>
+          <div class="figure-grid two" style="margin-top: 1rem">
+            <figure class="figure">
+              <img src="../assets/images/mug-stress-a-updated.jpg" alt="Updated thermal stress, Case A" />
+              <figcaption>Updated stress, Case A.</figcaption>
+            </figure>
+            <figure class="figure">
+              <img src="../assets/images/mug-stress-b-updated.jpg" alt="Updated thermal stress, Case B" />
+              <figcaption>Updated stress, Case B.</figcaption>
+            </figure>
+          </div>
+        </div>
+      </section>
+
+      <nav class="wrap pager">
+        <a href="bike-horn-mount.html"><small>Previous · 02</small>Bike Horn Mount</a>
+        <a href="pull-up-bar.html"><small>Next · 04</small>Pull-Up Bar</a>
+      </nav>
+    </main>
+
+    <footer class="site-footer">
+      <div class="wrap footer-inner">
+        <span>DWG CD-03 · DOUBLE-WALL MUG · SHEET 1</span>
+        <span>© <span data-year></span> Campbell Downs</span>
+      </div>
+    </footer>
+    <script src="../js/site.js"></script>
+  </body>
+</html>

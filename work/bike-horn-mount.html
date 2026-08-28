@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Bike Horn Mount Optimization — Campbell Downs</title>
+    <meta
+      name="description"
+      content="Parametric modeling and topology-informed redesign of a Nylon 6/10 bike horn mount, cutting mass by about 30 percent."
+    />
+    <link rel="icon" href="../assets/favicon.svg" type="image/svg+xml" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Instrument+Serif&family=Source+Sans+3:wght@400;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="../css/styles.css" />
+  </head>
+  <body>
+    <a class="skip" href="#main">Skip to content</a>
+    <header class="site-header">
+      <div class="wrap header-inner">
+        <a class="mark" href="../index.html">
+          <span class="mark-id">CD-02</span>
+          <span class="mark-name">Campbell Downs</span>
+        </a>
+        <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav">Menu</button>
+        <nav class="nav" id="site-nav">
+          <a href="../index.html#work" aria-current="page">Work</a>
+          <a href="../index.html#about">About</a>
+          <a href="../index.html#contact">Contact</a>
+          <a href="../assets/Campbell-Downs-CAD-Portfolio.pdf">Deck PDF</a>
+        </nav>
+      </div>
+    </header>
+
+    <header class="wrap page-title">
+      <span class="num">Project 02 · CAD + Analysis</span>
+      <h1>Bike Horn Mount Optimization</h1>
+      <p>Parametric modeling and optimization of a lightweight Nylon 6/10 accessory bracket.</p>
+      <div class="tags">
+        <span class="tag">Parametric CAD</span>
+        <span class="tag">Topology</span>
+        <span class="tag">Mass reduction</span>
+      </div>
+    </header>
+
+    <figure class="hero-figure">
+      <img src="../assets/images/horn-mount-optimized.jpg" alt="Final optimized bike horn mount geometry" />
+      <figcaption>Final optimized geometry after parametric screening and topology-guided material removal.</figcaption>
+    </figure>
+
+    <main id="main">
+      <section class="section">
+        <div class="wrap">
+          <article class="card">
+            <p>
+              Rebuilt a non-robust baseline model into a simplified, optimization-ready
+              mount, then evaluated geometry changes against mass and minimum factor of
+              safety.
+            </p>
+          </article>
+          <div class="metrics three" style="margin-top: 1rem">
+            <div class="stat"><b>0.2055 N</b><span>Horn load</span></div>
+            <div class="stat"><b>Nylon 6/10</b><span>Material</span></div>
+            <div class="stat"><b>270</b><span>Design scenarios</span></div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="wrap">
+          <div class="section-head">
+            <h2>Baseline to parametric design</h2>
+            <p>Variables studied: bridge width, length, and fillet radius.</p>
+          </div>
+          <div class="figure-grid two">
+            <figure class="figure">
+              <img src="../assets/images/horn-mount-baseline.jpg" alt="Baseline bike horn mount CAD model" />
+              <figcaption>Baseline design.</figcaption>
+            </figure>
+            <figure class="figure">
+              <img src="../assets/images/horn-mount-parametric.jpg" alt="Selected parametric bike horn mount" />
+              <figcaption>Selected parametric design.</figcaption>
+            </figure>
+          </div>
+          <figure class="figure" style="margin-top: 1rem">
+            <img src="../assets/images/horn-mount-plot.jpg" alt="Scatter plot of mass versus minimum factor of safety for 270 scenarios" />
+            <figcaption>Mass vs. minimum factor of safety across all 270 scenarios.</figcaption>
+          </figure>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="wrap">
+          <div class="section-head">
+            <h2>Topology-informed redesign</h2>
+            <p>Moving from parametric optimization to targeted material removal.</p>
+          </div>
+          <div class="figure-grid">
+            <figure class="figure">
+              <img src="../assets/images/horn-mount-topology.jpg" alt="Topology optimization result showing low-stress removal regions" />
+              <figcaption>Topology result: low-stress removal regions.</figcaption>
+            </figure>
+            <figure class="figure">
+              <img src="../assets/images/horn-mount-optimized.jpg" alt="Final optimized mount" />
+              <figcaption>Final optimized geometry.</figcaption>
+            </figure>
+            <figure class="figure">
+              <img src="../assets/images/horn-mount-static.jpg" alt="Final static FEA study of the optimized mount" />
+              <figcaption>Final static study.</figcaption>
+            </figure>
+          </div>
+          <article class="card takeaway" style="margin-top: 1rem">
+            <p class="result">≈30%</p>
+            <p>Mass reduction from the selected parametric design. Final factor of safety remained above 100.</p>
+            <h3>Engineering takeaway</h3>
+            <p>
+              Simplify an unstable CAD model, define meaningful parameters, evaluate
+              design-space tradeoffs, then use topology results to guide final geometry.
+            </p>
+          </article>
+        </div>
+      </section>
+
+      <nav class="wrap pager">
+        <a href="fitness-rack.html"><small>Previous · 01</small>Fitness Rack</a>
+        <a href="double-wall-mug.html"><small>Next · 03</small>Double-Wall Mug</a>
+      </nav>
+    </main>
+
+    <footer class="site-footer">
+      <div class="wrap footer-inner">
+        <span>DWG CD-02 · HORN MOUNT · SHEET 1</span>
+        <span>© <span data-year></span> Campbell Downs</span>
+      </div>
+    </footer>
+    <script src="../js/site.js"></script>
+  </body>
+</html>
