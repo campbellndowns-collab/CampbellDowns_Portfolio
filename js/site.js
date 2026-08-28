@@ -58,28 +58,46 @@ const dots = document.querySelector(".gallery-dots");
 
 if (gallery && dots) {
   const slides = [...gallery.querySelectorAll(".thumb")];
+  const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
+
+  const slideWidth = () => gallery.clientWidth || 1;
+
+  const currentIndex = () => {
+    const width = slideWidth();
+    const max = Math.max(0, slides.length - 1);
+    return Math.min(max, Math.max(0, Math.round(gallery.scrollLeft / width)));
+  };
+
+  const scrollToSlide = (index, behavior) => {
+    const max = Math.max(0, slides.length - 1);
+    const next = Math.min(max, Math.max(0, index));
+    const smooth = behavior ?? (reducedMotion.matches ? "auto" : "smooth");
+    gallery.scrollTo({ left: next * slideWidth(), behavior: smooth });
+  };
+
   dots.replaceChildren(
     ...slides.map((_, index) => {
       const button = document.createElement("button");
       button.type = "button";
       button.setAttribute("aria-label", `Show preview ${index + 1}`);
       button.addEventListener("click", () => {
-        slides[index].scrollIntoView({ behavior: "smooth", inline: "center", block: "nearest" });
+        scrollToSlide(index);
       });
       return button;
     })
   );
 
   const syncDots = () => {
-    const x = gallery.scrollLeft;
-    const width = gallery.clientWidth || 1;
-    const index = Math.round(x / width);
+    const index = currentIndex();
     [...dots.children].forEach((button, i) => {
       button.toggleAttribute("aria-current", i === index);
     });
   };
 
   gallery.addEventListener("scroll", syncDots, { passive: true });
-  window.addEventListener("resize", syncDots);
+  window.addEventListener("resize", () => {
+    scrollToSlide(currentIndex(), "auto");
+    syncDots();
+  });
   syncDots();
 }

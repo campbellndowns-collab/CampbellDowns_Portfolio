@@ -843,11 +843,16 @@ a {
 
   .hero-gallery-wrap {
     min-height: 0;
+    padding: clamp(1rem, 2.4vw, 1.6rem);
+    padding-bottom: 0;
+    overflow: hidden;
+    background: linear-gradient(180deg, #12263a, #0d1b2a);
   }
 
   .hero-gallery {
     display: flex;
     overflow-x: auto;
+    overflow-y: hidden;
     overscroll-behavior-x: contain;
     scroll-snap-type: x mandatory;
     scroll-padding-inline: 0;
@@ -856,21 +861,27 @@ a {
     gap: 0;
     height: auto;
     padding: 0;
+    border-radius: 14px;
     grid-template-columns: none;
     grid-template-rows: none;
   }
 
   .hero-gallery .thumb {
+    box-sizing: border-box;
     flex: 0 0 100%;
     width: 100%;
+    min-width: 100%;
     max-width: 100%;
     scroll-snap-align: start;
+    scroll-snap-stop: always;
     height: min(62vw, 22rem);
-    border-radius: 0;
+    border-radius: 14px;
   }
 
   .gallery-dots {
     display: flex;
+    background: transparent;
+    padding: 0.85rem 0 1rem;
   }
 }
 
