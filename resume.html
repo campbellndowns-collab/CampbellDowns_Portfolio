@@ -38,21 +38,26 @@
         <span class="num">Curriculum vitae</span>
         <h1>Resume</h1>
         <p>
-          Current résumé for internship applications. A PDF viewer appears here
-          when the file is published.
+          Current résumé for internship applications. Download the PDF or view it
+          below. Replace <code>assets/resume.pdf</code> after you recompile in Overleaf
+          to keep this page current.
         </p>
-        <div class="resume-actions" data-resume-actions></div>
+        <div class="resume-actions" data-resume-actions>
+          <a class="btn btn-primary" href="assets/resume.pdf">Download PDF</a>
+        </div>
       </header>
 
-      <div class="resume-frame-wrap" data-resume-frame-wrap hidden>
+      <div class="resume-frame-wrap" data-resume-frame-wrap>
         <iframe
           class="resume-frame"
           data-resume-frame
           title="Campbell Downs resume"
+          src="assets/resume.pdf"
         ></iframe>
       </div>
 
-      <article class="card" data-resume-fallback>
+      <article class="card" data-resume-fallback hidden>
+        <h3>PDF not published yet</h3>
         <h3>PDF not published yet</h3>
         <p>
           The résumé is written in Overleaf. Overleaf does not provide a public
