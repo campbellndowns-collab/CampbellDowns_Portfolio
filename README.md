@@ -1,5 +1,7 @@
 # Campbell Downs — Engineering Design Portfolio
 
+Live site: [campbelldowns.com](https://campbelldowns.com)
+
 Static site for [Campbell Downs](mailto:campbellndowns@gmail.com), Purdue Aerospace Engineering. Content and figures are taken from the CAD portfolio deck (`assets/Campbell-Downs-CAD-Portfolio.pdf`).
 
 ## Local preview
@@ -14,18 +16,18 @@ Then open `http://localhost:8080`.
 
 1. Merge this branch to `main`.
 2. In the repo: **Settings → Pages**.
-3. Set source to **GitHub Actions** (this repo includes `.github/workflows/pages.yml`).
-4. After the workflow succeeds, the site is at:
-   `https://campbellndowns-collab.github.io/CampbellDowns_Portfolio/`
+3. Set source to **GitHub Actions**.
+4. Confirm the custom domain is `campbelldowns.com` (this repo includes a `CNAME` file).
+5. After DNS is in place, enable **Enforce HTTPS**.
 
-## Point a personal domain at the site
+Until DNS is pointed at GitHub, GitHub Pages may also serve the site at:
+`https://campbellndowns-collab.github.io/CampbellDowns_Portfolio/`
 
-The site uses relative URLs, so it works at the root of any domain.
+## DNS for campbelldowns.com
 
-1. In **Settings → Pages → Custom domain**, enter your domain (for example `campbelldowns.com` or `www.campbelldowns.com`).
-2. At your registrar, add DNS records:
+At the registrar that owns `campbelldowns.com`, set these records. Remove any old A/AAAA/CNAME records for `@` and `www` that point somewhere else.
 
-**Apex domain** (`campbelldowns.com`):
+**Apex (`campbelldowns.com`):**
 
 | Type | Name | Value |
 | --- | --- | --- |
@@ -38,16 +40,13 @@ The site uses relative URLs, so it works at the root of any domain.
 | AAAA | @ | 2606:50c0:8002::153 |
 | AAAA | @ | 2606:50c0:8003::153 |
 
-**www subdomain:**
+**www (`www.campbelldowns.com`):**
 
 | Type | Name | Value |
 | --- | --- | --- |
 | CNAME | www | campbellndowns-collab.github.io |
 
-3. Wait for DNS to propagate, then enable **Enforce HTTPS** on the Pages settings screen.
-4. Optional: add a `CNAME` file in this repo containing only your domain name. GitHub often creates this file automatically when you save the custom domain.
-
-If you reply with the exact domain you already own, the `CNAME` file can be committed for you.
+DNS can take a few minutes to a few hours. After GitHub shows the domain as verified, check **Enforce HTTPS**.
 
 ## Site map
 
