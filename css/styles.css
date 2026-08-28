@@ -874,8 +874,15 @@ a {
     max-width: 100%;
     scroll-snap-align: start;
     scroll-snap-stop: always;
-    height: min(62vw, 22rem);
+    height: auto;
+    grid-template-rows: auto auto;
     border-radius: 14px;
+  }
+
+  .hero-gallery .thumb img {
+    height: auto;
+    aspect-ratio: 4 / 3;
+    object-fit: cover;
   }
 
   .gallery-dots {
