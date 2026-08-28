@@ -50,7 +50,7 @@ DNS can take a few minutes to a few hours. After GitHub shows the domain as veri
 
 ## Site map
 
-- `index.html` — profile, selected work, skills, contact
+- `resume.html` — placeholder until the resume file is added
 - `work/fitness-rack.html`
 - `work/bike-horn-mount.html`
 - `work/double-wall-mug.html`
