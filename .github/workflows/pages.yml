@@ -31,9 +31,8 @@ jobs:
             --exclude '.github' \
             --exclude 'README.md' \
             --exclude '.gitignore' \
+            --exclude 'CNAME' \
             ./ _site/
-          test -f _site/CNAME
-          grep -qx 'www.campbelldowns.com' _site/CNAME
       - uses: actions/configure-pages@v5
       - uses: actions/upload-pages-artifact@v3
         with:
