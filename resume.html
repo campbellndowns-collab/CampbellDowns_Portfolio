@@ -9,6 +9,7 @@
     <link rel="icon" href="assets/favicon.svg" type="image/svg+xml" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin />
     <link
       href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Instrument+Serif&family=Source+Sans+3:wght@400;600;700&display=swap"
       rel="stylesheet"
@@ -37,36 +38,19 @@
       <header class="page-title" style="padding-top: 0">
         <span class="num">Curriculum vitae</span>
         <h1>Resume</h1>
-        <p>
-          Current résumé for internship applications. Download the PDF or view it
-          below. Replace <code>assets/resume.pdf</code> after you recompile in Overleaf
-          to keep this page current.
-        </p>
+        <p>Current résumé for internship applications.</p>
         <div class="resume-actions" data-resume-actions>
           <a class="btn btn-primary" href="assets/resume.pdf">Download PDF</a>
         </div>
       </header>
 
-      <div class="resume-frame-wrap" data-resume-frame-wrap>
-        <iframe
-          class="resume-frame"
-          data-resume-frame
-          title="Campbell Downs resume"
-          src="assets/resume.pdf"
-        ></iframe>
+      <div class="resume-sheet" data-resume-sheet>
+        <img
+          class="resume-page"
+          src="assets/resume.png"
+          alt="Resume for Campbell Downs, Purdue Aerospace Engineering"
+        />
       </div>
-
-      <article class="card" data-resume-fallback hidden>
-        <h3>PDF not published yet</h3>
-        <h3>PDF not published yet</h3>
-        <p>
-          The résumé is written in Overleaf. Overleaf does not provide a public
-          link to the latest compiled PDF, so this page cannot follow the Overleaf
-          editor live. To keep it current, export the PDF from Overleaf into
-          <code>assets/resume.pdf</code>, or set a public PDF URL in
-          <code>js/site-config.js</code>.
-        </p>
-      </article>
     </main>
 
     <footer class="site-footer">
@@ -77,6 +61,7 @@
     </footer>
     <script src="js/site-config.js"></script>
     <script src="js/site.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
     <script src="js/resume.js"></script>
   </body>
 </html>

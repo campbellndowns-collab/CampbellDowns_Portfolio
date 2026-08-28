@@ -56,7 +56,7 @@ Do not add a CNAME at the apex. Do not point `www` at `campbellndowns-collab.git
 
 ## Site map
 
-- `resume.html` — résumé viewer. The current PDF is `assets/resume.pdf`. After an Overleaf change, export a new PDF over that file. Optionally set `resumePdf` / `resumeOverleaf` in `js/site-config.js`.
+- `resume.html` — résumé as a page (not a PDF viewer). Source file is `assets/resume.pdf`; after Overleaf edits, replace that PDF. `assets/resume.png` is a static fallback.
 - `work/fitness-rack.html`
 - `work/bike-horn-mount.html`
 - `work/double-wall-mug.html`
