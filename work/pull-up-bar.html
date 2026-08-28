@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Pull-Up Bar Fatigue Optimization — Campbell Downs</title>
+    <meta
+      name="description"
+      content="Static and fatigue analysis of a cyclically loaded pull-up bar, redesigned for cost and weight while staying above a 10-year life target."
+    />
+    <link rel="icon" href="../assets/favicon.svg" type="image/svg+xml" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Instrument+Serif&family=Source+Sans+3:wght@400;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="../css/styles.css" />
+  </head>
+  <body>
+    <a class="skip" href="#main">Skip to content</a>
+    <header class="site-header">
+      <div class="wrap header-inner">
+        <a class="mark" href="../index.html">
+          <span class="mark-id">CD-04</span>
+          <span class="mark-name">Campbell Downs</span>
+        </a>
+        <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav">Menu</button>
+        <nav class="nav" id="site-nav">
+          <a href="../index.html#work" aria-current="page">Work</a>
+          <a href="../index.html#about">About</a>
+          <a href="../index.html#contact">Contact</a>
+          <a href="../assets/Campbell-Downs-CAD-Portfolio.pdf">Deck PDF</a>
+        </nav>
+      </div>
+    </header>
+
+    <header class="wrap page-title">
+      <span class="num">Project 04 · CAD + Analysis</span>
+      <h1>Pull-Up Bar Fatigue Optimization</h1>
+      <p>Static and fatigue analysis of a cyclically loaded consumer fitness component.</p>
+      <div class="tags">
+        <span class="tag">Fatigue</span>
+        <span class="tag">Material choice</span>
+        <span class="tag">Cost focus</span>
+      </div>
+    </header>
+
+    <figure class="hero-figure">
+      <img src="../assets/images/pullup-fea-hero.jpg" alt="Original von Mises stress plot of the pull-up bar" />
+      <figcaption>Original static stress under a 250 lb user load with both bar ends fixed.</figcaption>
+    </figure>
+
+    <main id="main">
+      <section class="section">
+        <div class="wrap">
+          <article class="card">
+            <p>
+              Evaluated a pull-up bar under a 250 lb user load, then modified geometry
+              and material selection to reduce cost and material usage while preserving
+              long-term durability.
+            </p>
+          </article>
+          <div class="metrics three" style="margin-top: 1rem">
+            <div class="stat"><b>250 lb</b><span>User load</span></div>
+            <div class="stat"><b>10 yr</b><span>Use target</span></div>
+            <div class="stat"><b>1M</b><span>Original life cycles</span></div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="wrap">
+          <div class="section-head">
+            <h2>Original study</h2>
+            <p>1112 N downward load, both bar ends fixed, zero-based fatigue loading, 208,572 cycle design target.</p>
+          </div>
+          <div class="figure-grid">
+            <figure class="figure">
+              <img src="../assets/images/pullup-original.jpg" alt="Original pull-up bar CAD model" />
+              <figcaption>Original model.</figcaption>
+            </figure>
+            <figure class="figure">
+              <img src="../assets/images/pullup-static-original.jpg" alt="Original static stress plot" />
+              <figcaption>Original static stress.</figcaption>
+            </figure>
+            <figure class="figure">
+              <img src="../assets/images/pullup-fatigue-original.jpg" alt="Original fatigue life plot" />
+              <figcaption>Original fatigue life plot.</figcaption>
+            </figure>
+          </div>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="wrap">
+          <div class="section-head">
+            <h2>Cost and weight-conscious redesign</h2>
+            <p>The original design was overbuilt, leaving room for material and cost reduction.</p>
+          </div>
+          <div class="figure-grid">
+            <figure class="figure">
+              <img src="../assets/images/pullup-improved.jpg" alt="Improved pull-up bar geometry" />
+              <figcaption>Improved geometry.</figcaption>
+            </figure>
+            <figure class="figure">
+              <img src="../assets/images/pullup-static-improved.jpg" alt="Improved static stress plot" />
+              <figcaption>Improved static stress.</figcaption>
+            </figure>
+            <figure class="figure">
+              <img src="../assets/images/pullup-fatigue-improved.jpg" alt="Improved fatigue life plot" />
+              <figcaption>Improved fatigue life.</figcaption>
+            </figure>
+          </div>
+          <article class="card takeaway" style="margin-top: 1rem">
+            <p class="result">284,160</p>
+            <p>Minimum fatigue cycles after redesign. <span class="good">Above 10-year target.</span></p>
+            <h3>Optimization choices</h3>
+            <p>
+              Increased inner diameter, reduced handle outer diameter, and changed
+              material from AISI 1020 steel to A36 steel to improve manufacturability
+              and reduce cost.
+            </p>
+          </article>
+        </div>
+      </section>
+
+      <nav class="wrap pager">
+        <a href="double-wall-mug.html"><small>Previous · 03</small>Double-Wall Mug</a>
+        <a href="../index.html#contact"><small>Next</small>Contact</a>
+      </nav>
+    </main>
+
+    <footer class="site-footer">
+      <div class="wrap footer-inner">
+        <span>DWG CD-04 · PULL-UP BAR · SHEET 1</span>
+        <span>© <span data-year></span> Campbell Downs</span>
+      </div>
+    </footer>
+    <script src="../js/site.js"></script>
+  </body>
+</html>

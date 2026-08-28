@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" role="img" aria-label="Campbell Downs">
+  <rect width="32" height="32" fill="#0d1b2a"/>
+  <rect x="1.25" y="1.25" width="29.5" height="29.5" fill="none" stroke="#8ec4e0" stroke-width="0.75"/>
+  <path d="M8 8h16v16H8z" fill="none" stroke="#8ec4e0" stroke-width="0.4" opacity="0.35"/>
+  <text x="16" y="21" text-anchor="middle" font-family="Georgia, serif" font-size="11" fill="#e8eef4" letter-spacing="0.5">CD</text>
+</svg>

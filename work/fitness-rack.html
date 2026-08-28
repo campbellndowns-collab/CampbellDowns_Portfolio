@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Multi-Station Fitness Rack — Campbell Downs</title>
+    <meta
+      name="description"
+      content="Structural design and multi-case static FEA for a compact residential gym rack supporting pull-up, dip, and leg raise stations."
+    />
+    <link rel="icon" href="../assets/favicon.svg" type="image/svg+xml" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Instrument+Serif&family=Source+Sans+3:wght@400;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="../css/styles.css" />
+  </head>
+  <body>
+    <a class="skip" href="#main">Skip to content</a>
+    <header class="site-header">
+      <div class="wrap header-inner">
+        <a class="mark" href="../index.html">
+          <span class="mark-id">CD-01</span>
+          <span class="mark-name">Campbell Downs</span>
+        </a>
+        <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav">Menu</button>
+        <nav class="nav" id="site-nav">
+          <a href="../index.html#work" aria-current="page">Work</a>
+          <a href="../index.html#about">About</a>
+          <a href="../index.html#contact">Contact</a>
+          <a href="../assets/Campbell-Downs-CAD-Portfolio.pdf">Deck PDF</a>
+        </nav>
+      </div>
+    </header>
+
+    <header class="wrap page-title">
+      <span class="num">Project 01 · CAD + Analysis</span>
+      <h1>Multi-Station Fitness Rack</h1>
+      <p>Structural design for a compact residential gym rack integrating pull-up, dip, and leg raise stations.</p>
+      <div class="tags">
+        <span class="tag">Assembly CAD</span>
+        <span class="tag">Static FEA</span>
+        <span class="tag">Fatigue</span>
+        <span class="tag">A36 steel</span>
+      </div>
+    </header>
+
+    <figure class="hero-figure">
+      <img src="../assets/images/fitness-rack-iso.jpg" alt="Isometric CAD model of the multi-station fitness rack" />
+      <figcaption>Consumer-grade rack sized for a home footprint: 86 in tall, 45 in wide, 60 in deep.</figcaption>
+    </figure>
+
+    <main id="main">
+      <section class="section">
+        <div class="wrap split">
+          <article class="card">
+            <h3>Design targets</h3>
+            <ul>
+              <li>Support a 250 lb user load</li>
+              <li>Global factor of safety target of 1.5</li>
+              <li>Critical structural FOS target of 2.0</li>
+              <li>Minimum 78,000 loading cycles</li>
+            </ul>
+          </article>
+          <article class="card">
+            <h3>Load cases</h3>
+            <ul>
+              <li>Balanced pull-up</li>
+              <li>Single-arm pull-up</li>
+              <li>Dip station loading</li>
+              <li>Leg raise station loading</li>
+            </ul>
+          </article>
+        </div>
+        <div class="wrap" style="margin-top: 1rem">
+          <div class="metrics">
+            <div class="stat"><b>86 in</b><span>Overall height</span></div>
+            <div class="stat"><b>45 in</b><span>Width</span></div>
+            <div class="stat"><b>60 in</b><span>Depth</span></div>
+            <div class="stat"><b>A36</b><span>Steel frame</span></div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="wrap">
+          <div class="section-head">
+            <h2>CAD views</h2>
+            <p>The assembly was modeled as a complete home gym station before any simulation.</p>
+          </div>
+          <div class="figure-grid two">
+            <figure class="figure">
+              <img src="../assets/images/fitness-rack-view-a.jpg" alt="Front CAD view of the fitness rack" />
+              <figcaption>Front view showing pull-up bar, dip arms, and backrest.</figcaption>
+            </figure>
+            <figure class="figure">
+              <img src="../assets/images/fitness-rack-view-b.jpg" alt="Side CAD view of the fitness rack" />
+              <figcaption>Side profile with base rails and bracing.</figcaption>
+            </figure>
+          </div>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="wrap">
+          <div class="section-head">
+            <h2>FEA-driven iteration</h2>
+            <p>Failure mode → redesign → validated result.</p>
+          </div>
+          <div class="figure-grid">
+            <figure class="figure">
+              <img src="../assets/images/fitness-rack-fea-initial.jpg" alt="Initial dip-load factor of safety plot" />
+              <figcaption>Initial dip-load FOS: below target near supports.</figcaption>
+            </figure>
+            <figure class="figure">
+              <img src="../assets/images/fitness-rack-fea-updated.jpg" alt="Updated dip-load factor of safety after reinforcement" />
+              <figcaption>Updated dip-load FOS after structural reinforcement.</figcaption>
+            </figure>
+            <figure class="figure">
+              <img src="../assets/images/fitness-rack-fea-asymmetric.jpg" alt="Asymmetric pull-up factor of safety plot" />
+              <figcaption>Asymmetric pull-up identified upper-arm weakness.</figcaption>
+            </figure>
+          </div>
+          <article class="card takeaway" style="margin-top: 1rem">
+            <h3>Design response</h3>
+            <p>
+              Added rear bracing and a front support/step to distribute load into the
+              lower frame. The upper arm material thickness was then doubled to resolve
+              the single-arm pull-up case.
+            </p>
+            <div class="tags">
+              <span class="tag">FEA</span>
+              <span class="tag">Design iteration</span>
+              <span class="tag">Fatigue validation</span>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <nav class="wrap pager">
+        <a href="../index.html#work"><small>Back</small>Selected work</a>
+        <a href="bike-horn-mount.html"><small>Next · 02</small>Bike Horn Mount</a>
+      </nav>
+    </main>
+
+    <footer class="site-footer">
+      <div class="wrap footer-inner">
+        <span>DWG CD-01 · FITNESS RACK · SHEET 1</span>
+        <span>© <span data-year></span> Campbell Downs</span>
+      </div>
+    </footer>
+    <script src="../js/site.js"></script>
+  </body>
+</html>
