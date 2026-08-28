@@ -751,6 +751,10 @@ a {
   overflow: hidden;
 }
 
+.resume-page-wrap {
+  position: relative;
+}
+
 .resume-page {
   display: block;
   width: 100%;
@@ -759,8 +763,28 @@ a {
   vertical-align: top;
 }
 
-.resume-page + .resume-page {
+.resume-page + .resume-page,
+.resume-page-wrap + .resume-page-wrap {
   border-top: 1px solid var(--line);
+}
+
+.resume-link-layer {
+  position: absolute;
+  inset: 0;
+}
+
+.resume-hotspot {
+  position: absolute;
+  z-index: 1;
+  border-radius: 2px;
+  cursor: pointer;
+}
+
+.resume-hotspot:hover,
+.resume-hotspot:focus-visible {
+  outline: 2px solid var(--steel);
+  outline-offset: 1px;
+  background: rgba(61, 126, 166, 0.08);
 }
 
 .resume-actions {
