@@ -4,7 +4,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Resume — Campbell Downs</title>
-    <meta name="description" content="Resume for Campbell Downs. File coming soon." />
+    <meta name="description" content="Resume for Campbell Downs, Purdue Aeronautics and Astronautics." />
     <link rel="canonical" href="https://www.campbelldowns.com/resume.html" />
     <link rel="icon" href="assets/favicon.svg" type="image/svg+xml" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -26,20 +26,42 @@
         <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav">Menu</button>
         <nav class="nav" id="site-nav">
           <a href="index.html#work">Work</a>
-          <a href="index.html#about">About</a>
+          <a href="index.html#about">Profile</a>
           <a href="resume.html" aria-current="page">Resume</a>
           <a href="index.html#contact">Contact</a>
-          <a href="assets/Campbell-Downs-CAD-Portfolio.pdf">Deck PDF</a>
         </nav>
       </div>
     </header>
 
-    <main id="main" class="wrap section blank-sheet">
-      <div>
-        <p class="blank-mark">Blank</p>
+    <main id="main" class="wrap section">
+      <header class="page-title" style="padding-top: 0">
+        <span class="num">Curriculum vitae</span>
         <h1>Resume</h1>
-        <p>This page is a placeholder. The resume file will be posted here when it is ready.</p>
+        <p>
+          Current résumé for internship applications. A PDF viewer appears here
+          when the file is published.
+        </p>
+        <div class="resume-actions" data-resume-actions></div>
+      </header>
+
+      <div class="resume-frame-wrap" data-resume-frame-wrap hidden>
+        <iframe
+          class="resume-frame"
+          data-resume-frame
+          title="Campbell Downs resume"
+        ></iframe>
       </div>
+
+      <article class="card" data-resume-fallback>
+        <h3>PDF not published yet</h3>
+        <p>
+          The résumé is written in Overleaf. Overleaf does not provide a public
+          link to the latest compiled PDF, so this page cannot follow the Overleaf
+          editor live. To keep it current, export the PDF from Overleaf into
+          <code>assets/resume.pdf</code>, or set a public PDF URL in
+          <code>js/site-config.js</code>.
+        </p>
+      </article>
     </main>
 
     <footer class="site-footer">
@@ -48,6 +70,8 @@
         <span>© <span data-year></span> Campbell Downs · <span class="host-mark" data-host-mark>.g / .v</span></span>
       </div>
     </footer>
+    <script src="js/site-config.js"></script>
     <script src="js/site.js"></script>
+    <script src="js/resume.js"></script>
   </body>
 </html>

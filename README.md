@@ -1,8 +1,8 @@
-# Campbell Downs — Engineering Design Portfolio
+# Campbell Downs — Design & Analysis
 
 Live site: [www.campbelldowns.com](http://www.campbelldowns.com)
 
-Static site for [Campbell Downs](mailto:campbellndowns@gmail.com), Purdue Aerospace Engineering. Content and figures are taken from the CAD portfolio deck (`assets/Campbell-Downs-CAD-Portfolio.pdf`).
+Static site for [Campbell Downs](mailto:campbellndowns@gmail.com), Purdue School of Aeronautics and Astronautics. Content and figures are taken from the CAD portfolio deck (`assets/Campbell-Downs-CAD-Portfolio.pdf`).
 
 ## Local preview
 
@@ -56,7 +56,7 @@ Do not add a CNAME at the apex. Do not point `www` at `campbellndowns-collab.git
 
 ## Site map
 
-- `resume.html` — placeholder until the resume file is added
+- `resume.html` — résumé viewer. Add `assets/resume.pdf`, or set `resumePdf` / `resumeOverleaf` in `js/site-config.js`. Overleaf has no public live-PDF URL, so the compiled file has to be published somewhere the site can load.
 - `work/fitness-rack.html`
 - `work/bike-horn-mount.html`
 - `work/double-wall-mug.html`
