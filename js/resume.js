@@ -1,4 +1,5 @@
 const config = window.CAMPBELL_SITE || {};
+const wrap = document.querySelector("[data-resume-frame-wrap]");
 const frame = document.querySelector("[data-resume-frame]");
 const fallback = document.querySelector("[data-resume-fallback]");
 const actions = document.querySelector("[data-resume-actions]");
@@ -9,7 +10,7 @@ const overleafUrl = (config.resumeOverleaf || "").trim();
 const addAction = (href, label, primary = false) => {
   if (!actions) return;
   const link = document.createElement("a");
-    link.className = primary ? "btn btn-primary" : "btn btn-secondary";
+  link.className = primary ? "btn btn-primary" : "btn btn-secondary";
   link.href = href;
   link.textContent = label;
   if (/^https?:/i.test(href)) link.target = "_blank";
@@ -18,10 +19,8 @@ const addAction = (href, label, primary = false) => {
 };
 
 const showPdf = (url) => {
-  if (frame) {
-    frame.src = url;
-    frame.hidden = false;
-  }
+  if (frame) frame.src = url;
+  if (wrap) wrap.hidden = false;
   if (fallback) fallback.hidden = true;
   addAction(url, "Download PDF", true);
 };
@@ -48,7 +47,7 @@ const start = async () => {
     return;
   }
 
-  if (frame) frame.hidden = true;
+  if (wrap) wrap.hidden = true;
   if (fallback) fallback.hidden = false;
 };
 

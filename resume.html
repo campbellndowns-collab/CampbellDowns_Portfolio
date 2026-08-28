@@ -38,42 +38,30 @@
         <span class="num">Curriculum vitae</span>
         <h1>Resume</h1>
         <p>
-          The résumé is maintained in Overleaf. This page shows the latest public PDF
-          when one is available. Overleaf does not provide a public live-PDF link, so
-          the file is loaded from this site or from a public URL in
-          <code>js/site-config.js</code>.
+          Current résumé for internship applications. A PDF viewer appears here
+          when the file is published.
         </p>
         <div class="resume-actions" data-resume-actions></div>
       </header>
 
-      <div class="resume-frame-wrap">
+      <div class="resume-frame-wrap" data-resume-frame-wrap hidden>
         <iframe
           class="resume-frame"
           data-resume-frame
           title="Campbell Downs resume"
-          hidden
         ></iframe>
-        <div class="card" data-resume-fallback style="margin: 1rem; box-shadow: none">
-          <h3>PDF not published yet</h3>
-          <p>
-            To keep this page current without editing HTML each time, pick one of these:
-          </p>
-          <ul>
-            <li>
-              Export the Overleaf PDF to <code>assets/resume.pdf</code> in this repo
-              (simplest; update that file when the résumé changes).
-            </li>
-            <li>
-              Put the PDF on Google Drive or Dropbox with a public link, then set
-              <code>resumePdf</code> in <code>js/site-config.js</code>.
-            </li>
-            <li>
-              Set <code>resumeOverleaf</code> to your Overleaf read-only share link if
-              you want a source shortcut. Recruiters still need a PDF, not the editor.
-            </li>
-          </ul>
-        </div>
       </div>
+
+      <article class="card" data-resume-fallback>
+        <h3>PDF not published yet</h3>
+        <p>
+          The résumé is written in Overleaf. Overleaf does not provide a public
+          link to the latest compiled PDF, so this page cannot follow the Overleaf
+          editor live. To keep it current, export the PDF from Overleaf into
+          <code>assets/resume.pdf</code>, or set a public PDF URL in
+          <code>js/site-config.js</code>.
+        </p>
+      </article>
     </main>
 
     <footer class="site-footer">

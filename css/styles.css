@@ -170,7 +170,7 @@ a {
 }
 
 .hero-copy {
-  padding: clamp(1.6rem, 4vw, 3.4rem);
+  padding: clamp(2rem, 5vw, 3.6rem);
   min-width: 0;
 }
 
@@ -320,9 +320,9 @@ a {
 
 .thumb span {
   font-family: var(--mono);
-  font-size: clamp(0.62rem, 0.9vw, 0.72rem);
-  padding: 0.45rem 0.65rem 0.6rem;
-  color: var(--muted);
+  font-size: clamp(0.68rem, 0.9vw, 0.78rem);
+  padding: 0.5rem 0.7rem 0.65rem;
+  color: var(--ink-soft);
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -579,7 +579,8 @@ a {
   font-family: var(--mono);
   font-size: 0.72rem;
   color: var(--muted);
-  padding: 0.7rem 1rem 0.9rem;
+  padding: 0.85rem 1rem 1rem;
+  overflow-wrap: anywhere;
 }
 
 .figure {
@@ -682,6 +683,14 @@ a {
   padding: 1.05rem 1.15rem;
 }
 
+.skill-board div:nth-child(odd) {
+  border-right: 1px solid var(--line);
+}
+
+.skill-board div:nth-child(-n + 2) {
+  border-bottom: 1px solid var(--line);
+}
+
 .skill-board h3 {
   margin: 0 0 0.45rem;
   font-size: 0.92rem;
@@ -776,6 +785,17 @@ a {
   .skill-board,
   .process {
     grid-template-columns: 1fr;
+  }
+
+  .skill-board div,
+  .skill-board div:nth-child(odd),
+  .skill-board div:nth-child(-n + 2) {
+    border-right: 0;
+    border-bottom: 1px solid var(--line);
+  }
+
+  .skill-board div:last-child {
+    border-bottom: 0;
   }
 
   .section-head {
