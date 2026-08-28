@@ -498,6 +498,11 @@ a {
   flex-wrap: wrap;
 }
 
+.host-mark {
+  letter-spacing: 0.04em;
+  color: var(--muted);
+}
+
 .page-title {
   padding: 2.4rem 0 0.4rem;
 }
