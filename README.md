@@ -1,6 +1,6 @@
 # Campbell Downs — Engineering Design Portfolio
 
-Live site: [campbelldowns.com](https://campbelldowns.com)
+Live site: [www.campbelldowns.com](http://www.campbelldowns.com)
 
 Static site for [Campbell Downs](mailto:campbellndowns@gmail.com), Purdue Aerospace Engineering. Content and figures are taken from the CAD portfolio deck (`assets/Campbell-Downs-CAD-Portfolio.pdf`).
 
@@ -17,36 +17,42 @@ Then open `http://localhost:8080`.
 1. Merge this branch to `main`.
 2. In the repo: **Settings → Pages**.
 3. Set source to **GitHub Actions**.
-4. Confirm the custom domain is `campbelldowns.com` (this repo includes a `CNAME` file).
-5. After DNS is in place, enable **Enforce HTTPS**.
+4. Set the custom domain to **`www.campbelldowns.com`** (must match the `CNAME` file). Do not save `campbelldowns.com` here — GitHub already maps the apex as the alternate name.
+5. After GitHub’s DNS check turns green, enable **Enforce HTTPS**.
 
-Until DNS is pointed at GitHub, GitHub Pages may also serve the site at:
-`https://campbellndowns-collab.github.io/CampbellDowns_Portfolio/`
+Until HTTPS is issued, the site is already served over HTTP at `http://www.campbelldowns.com` (and `http://campbelldowns.com` redirects there).
 
 ## DNS for campbelldowns.com
 
-At the registrar that owns `campbelldowns.com`, set these records. Remove any old A/AAAA/CNAME records for `@` and `www` that point somewhere else.
+Public DNS is already pointed at GitHub Pages. As of 2026-08-28:
 
-**Apex (`campbelldowns.com`):**
-
-| Type | Name | Value |
+| Name | Type | Value |
 | --- | --- | --- |
-| A | @ | 185.199.108.153 |
-| A | @ | 185.199.109.153 |
-| A | @ | 185.199.110.153 |
-| A | @ | 185.199.111.153 |
-| AAAA | @ | 2606:50c0:8000::153 |
-| AAAA | @ | 2606:50c0:8001::153 |
-| AAAA | @ | 2606:50c0:8002::153 |
-| AAAA | @ | 2606:50c0:8003::153 |
+| `@` / `campbelldowns.com` | A | 185.199.108.153, .109.153, .110.153, .111.153 |
+| `@` / `campbelldowns.com` | AAAA | 2606:50c0:8000::153 through 8003::153 |
+| `www` | CNAME | `campbellndowns-collab.github.io` |
 
-**www (`www.campbelldowns.com`):**
+Nameservers are Squarespace (`nse1`–`nse4.squarespacedns.com`). Google Public DNS returns those records from the authoritative servers.
 
-| Type | Name | Value |
-| --- | --- | --- |
-| CNAME | www | campbellndowns-collab.github.io |
+`InvalidDNSError` and “both www.campbelldowns.com and campbelldowns.com are improperly configured” are **GitHub’s checker failing to retrieve DNS**, not missing A/CNAME records. GitHub treats that error as “lookup empty/timeout,” which is why Enforce HTTPS stays grayed out even though HTTP already works.
 
-DNS can take a few minutes to a few hours. After GitHub shows the domain as verified, check **Enforce HTTPS**.
+### What still needs to happen in Squarespace and GitHub
+
+1. **Squarespace DNS panel** — delete leftover Squarespace website defaults. Extra records block GitHub’s HTTPS certificate even when the GitHub records also exist. Remove any of these if present:
+   - A records to `198.49.23.144`, `198.49.23.145`, `198.185.159.144`, `198.185.159.145`
+   - `www` CNAME to `ext-cust.squarespace.com` or any Squarespace host
+   - URL forwarding / domain forwarding
+   - A Squarespace site connected to this domain
+2. **GitHub custom domain reset** (this is the usual fix once records are correct):
+   - Repo **Settings → Pages → Custom domain** → remove `www.campbelldowns.com`
+   - Wait 10–15 minutes
+   - Add **`www.campbelldowns.com`** and Save
+   - Leave Enforce HTTPS unchecked until the DNS check shows a green check
+3. **Verify the domain on your GitHub account** (optional but helps): [github.com/settings/pages_verified_domains](https://github.com/settings/pages_verified_domains) → add `campbelldowns.com` → put the `_github-pages-challenge-campbellndowns-collab` TXT record in Squarespace → verify
+4. If the red InvalidDNSError is still there after a re-add, wait out GitHub’s cache (often several hours). The records do not need to be changed again.
+5. Last resort: move DNS to Cloudflare (same A/AAAA/CNAME values, DNS only / grey cloud) or open a GitHub Support ticket. Public resolvers already see the correct GitHub records.
+
+Do not add a CNAME at the apex. Do not point `www` at `campbellndowns-collab.github.io/CampbellDowns_Portfolio` — the CNAME target is the hostname only.
 
 ## Site map
 
