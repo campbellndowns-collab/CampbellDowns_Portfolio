@@ -299,7 +299,7 @@ a {
 }
 
 .thumb {
-  background: var(--sheet);
+  background: var(--photo-mat, var(--sheet));
   border-radius: 14px;
   overflow: hidden;
   min-width: 0;
@@ -316,7 +316,7 @@ a {
   height: 100%;
   min-height: 0;
   object-fit: cover;
-  background: #e7eef6;
+  background: var(--photo-grade, var(--photo-mat, #e8e8e8));
 }
 
 .thumb span {
@@ -327,6 +327,62 @@ a {
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
+  background: var(--photo-mat, transparent);
+}
+
+.photo-mat-rack {
+  --photo-grade: radial-gradient(130% 90% at 38% 30%, #fcfcfc 0%, transparent 58%),
+    linear-gradient(
+      180deg,
+      #ececec 0%,
+      #f3f3f3 12%,
+      #f8f8f8 25%,
+      #fcfcfc 38%,
+      #f7f7f7 62%,
+      #f2f2f2 75%,
+      #ededed 88%,
+      #e7e7e7 100%
+    );
+  --photo-mat: #e7e7e7;
+}
+
+.photo-mat-horn {
+  --photo-grade: linear-gradient(
+    180deg,
+    #f4f5f9 0%,
+    #f9fafc 12%,
+    #eeeff4 25%,
+    #e2e5ec 38%,
+    #e8eaf0 50%,
+    #f6f7f9 62%,
+    #fefefe 75%,
+    #fcfcfc 100%
+  );
+  --photo-mat: #f6f7f9;
+}
+
+.photo-mat-mug {
+  --photo-grade: linear-gradient(
+    180deg,
+    #dfdfdf 0%,
+    #e6e6e6 20%,
+    #ececec 45%,
+    #f2f2f2 70%,
+    #eaeaea 100%
+  );
+  --photo-mat: #eaeaea;
+}
+
+.photo-mat-fea {
+  --photo-grade: linear-gradient(
+    180deg,
+    #e0e0e0 0%,
+    #e8e8e8 22%,
+    #eeeeee 48%,
+    #e8e8e8 78%,
+    #e5e5e5 100%
+  );
+  --photo-mat: #e5e5e5;
 }
 
 .gallery-dots {
@@ -461,7 +517,7 @@ a {
   height: auto;
   aspect-ratio: 4 / 3;
   object-fit: cover;
-  background: #e7eef6;
+  background: var(--photo-grade, var(--photo-mat, #e8e8e8));
 }
 
 .work-card .body {
@@ -562,7 +618,7 @@ a {
 .hero-figure {
   margin: 1.4rem auto 0;
   width: min(calc(100% - 2rem), var(--max));
-  background: var(--sheet);
+  background: var(--photo-mat, var(--sheet));
   border: 1px solid var(--line);
   border-radius: 18px;
   overflow: hidden;
@@ -572,7 +628,7 @@ a {
   width: 100%;
   max-height: 620px;
   object-fit: contain;
-  background: #eef3f8;
+  background: var(--photo-grade, var(--photo-mat, #e8e8e8));
 }
 
 .hero-figure figcaption,
@@ -586,7 +642,7 @@ a {
 
 .figure {
   margin: 0;
-  background: var(--sheet);
+  background: var(--photo-mat, var(--sheet));
   border: 1px solid var(--line);
   border-radius: 16px;
   overflow: hidden;
@@ -597,7 +653,7 @@ a {
   height: auto;
   aspect-ratio: 4 / 3;
   object-fit: contain;
-  background: #eef3f8;
+  background: var(--photo-grade, var(--photo-mat, #e8e8e8));
 }
 
 .metrics {
@@ -884,7 +940,7 @@ a {
     height: auto;
     aspect-ratio: 3 / 4;
     object-fit: contain;
-    background: #e7eef6;
+    background: var(--photo-grade, var(--photo-mat, #e8e8e8));
   }
 
   .gallery-dots {
