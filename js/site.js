@@ -101,3 +101,88 @@ if (gallery && dots) {
   });
   syncDots();
 }
+
+const hexColor = ([r, g, b]) =>
+  `#${[r, g, b].map((channel) => channel.toString(16).padStart(2, "0")).join("")}`;
+
+const medianColor = (pixels) => {
+  if (!pixels.length) return [232, 232, 232];
+  const pick = (index) => {
+    const values = pixels.map((pixel) => pixel[index]).sort((a, b) => a - b);
+    return values[Math.floor(values.length / 2)];
+  };
+  return [pick(0), pick(1), pick(2)];
+};
+
+const samplePhotoGrade = (img) => {
+  const srcW = img.naturalWidth;
+  const srcH = img.naturalHeight;
+  if (!srcW || !srcH) return null;
+
+  const canvas = document.createElement("canvas");
+  const width = 48;
+  const height = Math.max(24, Math.round((width * srcH) / srcW));
+  canvas.width = width;
+  canvas.height = height;
+  const ctx = canvas.getContext("2d", { willReadFrequently: true });
+  if (!ctx) return null;
+  ctx.drawImage(img, 0, 0, width, height);
+
+  let data;
+  try {
+    data = ctx.getImageData(0, 0, width, height).data;
+  } catch {
+    return null;
+  }
+
+  const at = (x, y) => {
+    const i = (y * width + x) * 4;
+    return [data[i], data[i + 1], data[i + 2]];
+  };
+  const chroma = ([r, g, b]) => Math.max(r, g, b) - Math.min(r, g, b);
+  const isBackdrop = (pixel) => chroma(pixel) < 26;
+
+  const stopCount = 7;
+  const stops = [];
+  for (let s = 0; s < stopCount; s += 1) {
+    const y = Math.round((s / (stopCount - 1)) * (height - 1));
+    const collected = [];
+    const y0 = Math.max(0, y - 1);
+    const y1 = Math.min(height - 1, y + 1);
+    const edge = Math.max(2, Math.floor(width * 0.08));
+    for (let yy = y0; yy <= y1; yy += 1) {
+      for (let x = 0; x < edge; x += 1) {
+        const pixel = at(x, yy);
+        if (isBackdrop(pixel)) collected.push(pixel);
+      }
+    }
+    if (s === 0 || s === stopCount - 1) {
+      const yy = s === 0 ? 0 : height - 1;
+      for (let x = Math.floor(width * 0.06); x < Math.floor(width * 0.82); x += 1) {
+        const pixel = at(x, yy);
+        if (isBackdrop(pixel)) collected.push(pixel);
+      }
+    }
+    stops.push(medianColor(collected));
+  }
+
+  const gradient = `linear-gradient(180deg, ${stops
+    .map((color, index) => `${hexColor(color)} ${Math.round((index / (stops.length - 1)) * 100)}%`)
+    .join(", ")})`;
+  return { gradient, mat: hexColor(stops[stops.length - 1]) };
+};
+
+const paintPhotoMat = (img) => {
+  const host = img.closest(".figure, .hero-figure, .thumb, .work-card");
+  if (!host || host.className.includes("photo-mat-")) return;
+  const sampled = samplePhotoGrade(img);
+  if (!sampled) return;
+  host.style.setProperty("--photo-grade", sampled.gradient);
+  host.style.setProperty("--photo-mat", sampled.mat);
+};
+
+document.querySelectorAll(".figure img, .hero-figure img, .thumb img, .work-card img").forEach((img) => {
+  const apply = () => paintPhotoMat(img);
+  if (img.complete && img.naturalWidth) apply();
+  else img.addEventListener("load", apply, { once: true });
+});
