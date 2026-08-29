@@ -8,7 +8,7 @@
       name="description"
       content="CAD, FEA, design optimization, and thermal analysis from Campbell Downs, Purdue School of Aeronautics and Astronautics."
     />
-    <meta name="theme-color" content="#0d1b2a" />
+    <meta name="theme-color" content="#0a0c0e" />
     <meta property="og:title" content="Campbell Downs — Design & Analysis" />
     <meta
       property="og:description"
@@ -21,17 +21,17 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Instrument+Serif&family=Source+Sans+3:wght@400;600;700&display=swap"
+      href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Source+Sans+3:wght@400;600;700&family=Space+Grotesk:wght@500;600;700&display=swap"
       rel="stylesheet"
     />
-    <link rel="stylesheet" href="css/styles.css" />
+    <link rel="stylesheet" href="css/styles.css?v=af361003" />
   </head>
-  <body>
+  <body class="home">
     <a class="skip" href="#main">Skip to content</a>
     <header class="site-header">
       <div class="wrap header-inner">
         <a class="mark" href="index.html">
-          <span class="mark-id">CD-00</span>
+          <span class="mark-id">AAE</span>
           <span class="mark-name">Campbell Downs</span>
         </a>
         <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav">Menu</button>
@@ -45,55 +45,87 @@
     </header>
 
     <section class="hero">
-      <div class="hero-grid">
-        <div class="hero-copy">
-          <p class="kicker">Purdue Aeronautics &amp; Astronautics</p>
-          <h1>Campbell <span>Downs</span></h1>
-          <p class="lede">
-            Design and analysis for manufacturable mechanical systems. Selected work
-            follows the same loop: requirements, CAD, simulation, and iteration.
-          </p>
-          <div class="meta-row">
-            <span class="chip">CAD</span>
-            <span class="chip">FEA</span>
-            <span class="chip">Design Optimization</span>
-            <span class="chip">Thermal Analysis</span>
-          </div>
-          <div class="hero-actions">
-            <a class="btn btn-primary" href="#work">View selected work</a>
-            <a class="btn btn-ghost" href="resume.html">Resume</a>
-          </div>
+      <div class="wrap hero-copy">
+        <p class="kicker">Purdue Aeronautics &amp; Astronautics</p>
+        <h1>I’m Campbell Downs, <em>designing</em> through analysis.</h1>
+        <p class="lede">
+          Aerospace engineering student working in CAD, FEA, and iteration. Selected
+          work follows the same loop: requirements, a model, a simulation, and a
+          change that can be manufactured.
+        </p>
+        <div class="hero-actions">
+          <a class="btn btn-primary" href="#work">Selected work</a>
+          <a class="btn btn-ghost" href="resume.html">Resume</a>
         </div>
-        <div class="hero-gallery-wrap">
-          <div class="hero-gallery" role="region" aria-label="Project previews">
-            <a class="thumb" href="work/fitness-rack.html">
-              <img src="assets/images/fitness-rack-iso.jpg" alt="CAD model of a multi-station fitness rack" />
-              <span>Multi-station fitness rack</span>
-            </a>
-            <a class="thumb" href="work/bike-horn-mount.html">
-              <img src="assets/images/horn-mount-optimized.jpg" alt="Optimized bike horn mount" />
-              <span>Optimized bracket</span>
-            </a>
-            <a class="thumb" href="work/double-wall-mug.html">
-              <img src="assets/images/mug-thermal-hero.jpg" alt="Thermal study of a double-wall mug" />
-              <span>Thermal study</span>
-            </a>
-            <a class="thumb" href="work/pull-up-bar.html">
-              <img src="assets/images/pullup-fea-hero.jpg" alt="Static FEA of a pull-up bar" />
-              <span>Static FEA</span>
-            </a>
-          </div>
-          <div class="gallery-dots" aria-hidden="true"></div>
+        <div class="telemetry">
+          <div><b>2029</b><span>Graduation</span></div>
+          <div><b>PLM</b><span>Minor</span></div>
+          <div><b>3.36</b><span>GPA</span></div>
+          <div><b>U.S.</b><span>Citizen</span></div>
+          <div><b>Open</b><span>Internships</span></div>
         </div>
       </div>
     </section>
 
     <main id="main">
+      <section id="work">
+        <div class="wrap section-head" style="padding-top: 1.2rem">
+          <h2>Selected work</h2>
+          <p>Four reports. Same workflow, different physics.</p>
+        </div>
+        <div class="work-index">
+          <a class="work-band" href="work/fitness-rack.html">
+            <div class="work-band-media">
+              <img src="assets/images/fitness-rack-iso.jpg" alt="CAD model of a multi-station home fitness rack" />
+            </div>
+            <div class="work-band-copy">
+              <span class="idx">01 / Assembly + FEA</span>
+              <h2>Multi-Station Fitness Rack</h2>
+              <p>Requirements, assembly CAD, multi-case static FEA, and fatigue verification for a 250 lb home gym load.</p>
+              <span class="outcome">Critical FOS target 2.0 · 78,000 cycles</span>
+            </div>
+          </a>
+          <a class="work-band" href="work/bike-horn-mount.html">
+            <div class="work-band-media">
+              <img src="assets/images/horn-mount-optimized.jpg" alt="Optimized Nylon 6/10 bike horn mount" />
+            </div>
+            <div class="work-band-copy">
+              <span class="idx">02 / Optimization</span>
+              <h2>Bike Horn Mount</h2>
+              <p>Parametric study and topology-guided redesign of a Nylon 6/10 accessory bracket.</p>
+              <span class="outcome">~30% mass reduction · FOS above 100</span>
+            </div>
+          </a>
+          <a class="work-band" href="work/double-wall-mug.html">
+            <div class="work-band-media">
+              <img src="assets/images/mug-thermal-hero.jpg" alt="Transient thermal plot of a double-wall mug" />
+            </div>
+            <div class="work-band-copy">
+              <span class="idx">03 / Thermal</span>
+              <h2>Double-Wall Mug</h2>
+              <p>Transient thermal and nonlinear stress simulation, then a liner change for durability.</p>
+              <span class="outcome">300 s transient · air and water cases</span>
+            </div>
+          </a>
+          <a class="work-band" href="work/pull-up-bar.html">
+            <div class="work-band-media">
+              <img src="assets/images/pullup-fea-hero.jpg" alt="Von Mises stress plot of a pull-up bar" />
+            </div>
+            <div class="work-band-copy">
+              <span class="idx">04 / Fatigue</span>
+              <h2>Pull-Up Bar</h2>
+              <p>Static analysis, fatigue life, material substitution, and geometry changes for cost and weight.</p>
+              <span class="outcome">284,160 min cycles · above 10-year target</span>
+            </div>
+          </a>
+        </div>
+      </section>
+
       <section class="section" id="about">
         <div class="wrap">
           <div class="section-head">
             <h2>Profile</h2>
-            <p>Summary from submitted project reports and current résumé.</p>
+            <p>From submitted project reports and the current résumé.</p>
           </div>
           <div class="profile-grid">
             <article class="card">
@@ -104,11 +136,6 @@
                 building CAD models, running simulations, identifying weaknesses, and
                 iterating toward validated designs.
               </p>
-              <div class="stats">
-                <div class="stat"><b>2029</b><span>Expected graduation</span></div>
-                <div class="stat"><b>PLM</b><span>Minor</span></div>
-                <div class="stat"><b>3.36</b><span>GPA</span></div>
-              </div>
             </article>
             <article class="card">
               <h3>Looking for</h3>
@@ -127,54 +154,11 @@
         </div>
       </section>
 
-      <section class="section" id="work">
-        <div class="wrap">
-          <div class="section-head">
-            <h2>Selected work</h2>
-            <p>CAD and analysis projects from submitted engineering reports.</p>
-          </div>
-          <div class="work-grid">
-            <a class="card work-card" href="work/fitness-rack.html">
-              <img src="assets/images/fitness-rack-iso.jpg" alt="CAD model of a multi-station home fitness rack" />
-              <div class="body">
-                <span class="num">01 / CAD + Analysis</span>
-                <h3>Multi-Station Fitness Rack</h3>
-                <p>Assembly design, requirements definition, multi-case static FEA, and fatigue verification.</p>
-              </div>
-            </a>
-            <a class="card work-card" href="work/bike-horn-mount.html">
-              <img src="assets/images/horn-mount-optimized.jpg" alt="Optimized Nylon 6/10 bike horn mount" />
-              <div class="body">
-                <span class="num">02 / CAD + Analysis</span>
-                <h3>Bike Horn Mount Optimization</h3>
-                <p>Parametric study, topology optimization, mass reduction, and Nylon 6/10 part design.</p>
-              </div>
-            </a>
-            <a class="card work-card" href="work/double-wall-mug.html">
-              <img src="assets/images/mug-thermal-hero.jpg" alt="Transient thermal plot of a double-wall mug" />
-              <div class="body">
-                <span class="num">03 / CAD + Analysis</span>
-                <h3>Double-Wall Mug Thermal Analysis</h3>
-                <p>Transient thermal simulation, nonlinear stress, and iteration for thermal durability.</p>
-              </div>
-            </a>
-            <a class="card work-card" href="work/pull-up-bar.html">
-              <img src="assets/images/pullup-fea-hero.jpg" alt="Von Mises stress plot of a pull-up bar" />
-              <div class="body">
-                <span class="num">04 / CAD + Analysis</span>
-                <h3>Pull-Up Bar Fatigue Optimization</h3>
-                <p>Static analysis, fatigue life, material substitution, and geometry optimization.</p>
-              </div>
-            </a>
-          </div>
-        </div>
-      </section>
-
       <section class="section" id="skills">
         <div class="wrap">
           <div class="section-head">
-            <h2>Core skills</h2>
-            <p>Tools used to move from CAD geometry to a validated design decision.</p>
+            <h2>Tools</h2>
+            <p>Used to move from CAD geometry to a design decision.</p>
           </div>
           <div class="skill-board">
             <div>
@@ -201,7 +185,7 @@
         <div class="wrap">
           <div class="section-head">
             <h2>Method</h2>
-            <p>The same engineering loop, applied to different physics.</p>
+            <p>The same loop, applied to different physics.</p>
           </div>
           <ol class="process">
             <li>
@@ -246,10 +230,10 @@
 
     <footer class="site-footer">
       <div class="wrap footer-inner">
-        <span>DWG CD-00 · SCALE NTS · SHEET 1</span>
+        <span>Purdue AAE · Design &amp; Analysis</span>
         <span>© <span data-year></span> Campbell Downs · <span class="host-mark" data-host-mark>.g / .v</span></span>
       </div>
     </footer>
-    <script src="js/site.js"></script>
+    <script src="js/site.js?v=e19542cb"></script>
   </body>
 </html>
