@@ -8,7 +8,7 @@
       name="description"
       content="CAD, FEA, design optimization, and thermal analysis from Campbell Downs, Purdue School of Aeronautics and Astronautics."
     />
-    <meta name="theme-color" content="#0a0c0e" />
+    <meta name="theme-color" content="#f4efe6" />
     <meta property="og:title" content="Campbell Downs — Design & Analysis" />
     <meta
       property="og:description"
@@ -24,7 +24,7 @@
       href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Source+Sans+3:wght@400;600;700&family=Space+Grotesk:wght@500;600;700&display=swap"
       rel="stylesheet"
     />
-    <link rel="stylesheet" href="css/styles.css?v=af361003" />
+    <link rel="stylesheet" href="css/styles.css?v=186bc401" />
   </head>
   <body class="home">
     <a class="skip" href="#main">Skip to content</a>
@@ -45,18 +45,25 @@
     </header>
 
     <section class="hero">
-      <div class="wrap hero-copy">
-        <p class="kicker">Purdue Aeronautics &amp; Astronautics</p>
-        <h1>I’m Campbell Downs, <em>designing</em> through analysis.</h1>
-        <p class="lede">
-          Aerospace engineering student working in CAD, FEA, and iteration. Selected
-          work follows the same loop: requirements, a model, a simulation, and a
-          change that can be manufactured.
-        </p>
-        <div class="hero-actions">
-          <a class="btn btn-primary" href="#work">Selected work</a>
-          <a class="btn btn-ghost" href="resume.html">Resume</a>
+      <div class="wrap hero-stage">
+        <div class="hero-copy">
+          <p class="kicker">Purdue Aeronautics &amp; Astronautics</p>
+          <h1>I’m Campbell Downs, <em>designing</em> through analysis.</h1>
+          <p class="lede">
+            Aerospace engineering student working in CAD, FEA, and iteration. Selected
+            work follows the same loop: requirements, a model, a simulation, and a
+            change that can be manufactured.
+          </p>
+          <div class="hero-actions">
+            <a class="btn btn-primary" href="#work">Selected work</a>
+            <a class="btn btn-ghost" href="resume.html">Resume</a>
+          </div>
         </div>
+        <figure class="hero-blob">
+          <img src="assets/images/fitness-rack-iso.jpg" alt="CAD model of a multi-station fitness rack" />
+        </figure>
+      </div>
+      <div class="wrap">
         <div class="telemetry">
           <div><b>2029</b><span>Graduation</span></div>
           <div><b>PLM</b><span>Minor</span></div>
@@ -68,12 +75,13 @@
     </section>
 
     <main id="main">
-      <section id="work">
-        <div class="wrap section-head" style="padding-top: 1.2rem">
-          <h2>Selected work</h2>
-          <p>Four reports. Same workflow, different physics.</p>
-        </div>
-        <div class="work-index">
+      <section id="work" class="section">
+        <div class="wrap">
+          <div class="section-head">
+            <h2>Selected work</h2>
+            <p>Four reports. Same workflow, different physics.</p>
+          </div>
+          <div class="work-index">
           <a class="work-band" href="work/fitness-rack.html">
             <div class="work-band-media">
               <img src="assets/images/fitness-rack-iso.jpg" alt="CAD model of a multi-station home fitness rack" />
@@ -118,6 +126,7 @@
               <span class="outcome">284,160 min cycles · above 10-year target</span>
             </div>
           </a>
+          </div>
         </div>
       </section>
 
