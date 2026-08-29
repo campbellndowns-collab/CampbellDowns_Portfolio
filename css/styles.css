@@ -882,8 +882,9 @@ a {
 
   .hero-gallery .thumb img {
     height: auto;
-    aspect-ratio: 4 / 3;
-    object-fit: cover;
+    aspect-ratio: 3 / 4;
+    object-fit: contain;
+    background: #e7eef6;
   }
 
   .gallery-dots {
