@@ -173,6 +173,7 @@ a {
 
 .hero-copy {
   padding: clamp(2rem, 5vw, 3.6rem);
+  padding-right: clamp(1.1rem, 2.2vw, 1.8rem);
   min-width: 0;
 }
 
@@ -185,7 +186,7 @@ a {
   min-width: 0;
   width: 100%;
   height: 100%;
-  padding: 1.4rem;
+  padding: 1.25rem 1.35rem 1.25rem 0.75rem;
   overflow: hidden;
 }
 
@@ -286,10 +287,10 @@ a {
 }
 
 .hero-gallery {
-  --gallery-gap: 0.65rem;
+  --gallery-gap: 0.5rem;
   background: transparent;
   display: grid;
-  grid-template-columns: minmax(0, 0.28fr) minmax(0, 0.72fr);
+  grid-template-columns: minmax(0, 0.41fr) minmax(0, 0.59fr);
   grid-template-areas:
     "rack mug"
     "horn fea";
@@ -369,7 +370,7 @@ a {
 }
 
 .hero-gallery .photo-mat-fea img {
-  object-position: right center;
+  object-position: 62% 42%;
 }
 
 .thumb span {
@@ -383,7 +384,23 @@ a {
   background: var(--photo-mat, transparent);
 }
 
-.hero-gallery .thumb span {
+.hero-gallery .photo-mat-rack span,
+.hero-gallery .photo-mat-horn span {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 1;
+  white-space: normal;
+  overflow: visible;
+  text-overflow: unset;
+  line-height: 1.25;
+  padding: 1.1rem 0.65rem 0.5rem;
+  background: linear-gradient(180deg, transparent, var(--photo-mat, #e8e8e8) 70%);
+}
+
+.hero-gallery .photo-mat-mug span,
+.hero-gallery .photo-mat-fea span {
   position: absolute;
   left: 0;
   right: 0;
@@ -525,7 +542,7 @@ a {
 }
 
 .work-grid {
-  grid-template-columns: minmax(0, 0.28fr) minmax(0, 0.72fr);
+  grid-template-columns: minmax(0, 0.41fr) minmax(0, 0.59fr);
   grid-template-areas:
     "rack mug"
     "horn fea";
@@ -620,11 +637,11 @@ a {
 
 .work-card.photo-mat-mug img,
 .work-card.photo-mat-fea img {
-  aspect-ratio: 16 / 9;
+  aspect-ratio: 3 / 2;
 }
 
 .work-card.photo-mat-fea img {
-  object-position: right center;
+  object-position: 62% 42%;
 }
 
 .work-card .body {
