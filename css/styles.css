@@ -290,7 +290,7 @@ a {
   --gallery-gap: 0.5rem;
   background: transparent;
   display: grid;
-  grid-template-columns: minmax(0, 0.41fr) minmax(0, 0.59fr);
+  grid-template-columns: minmax(0, 0.34fr) minmax(0, 0.66fr);
   grid-template-areas:
     "rack mug"
     "horn fea";
@@ -542,7 +542,7 @@ a {
 }
 
 .work-grid {
-  grid-template-columns: minmax(0, 0.41fr) minmax(0, 0.59fr);
+  grid-template-columns: minmax(0, 0.34fr) minmax(0, 0.66fr);
   grid-template-areas:
     "rack mug"
     "horn fea";
@@ -1082,7 +1082,7 @@ a {
   }
 
   .hero-gallery .photo-mat-fea img {
-    object-position: right center;
+    object-position: 62% 42%;
   }
 
   .work-grid {
