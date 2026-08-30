@@ -166,7 +166,7 @@ a {
 
 .hero-grid {
   display: grid;
-  grid-template-columns: minmax(13rem, 0.78fr) minmax(22rem, 1.42fr);
+  grid-template-columns: minmax(16rem, 0.92fr) minmax(18rem, 1.18fr);
   min-height: min(36rem, 78vh);
   align-items: stretch;
 }
