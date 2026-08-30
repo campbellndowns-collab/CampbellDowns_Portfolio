@@ -71,14 +71,11 @@ if (gallery && dots) {
 
   const slideHeight = (slide) => {
     const img = slide.querySelector("img");
-    const caption = slide.querySelector("span");
     if (!img) return 0;
     const naturalW = img.naturalWidth;
     const naturalH = img.naturalHeight;
     if (!naturalW || !naturalH) return 0;
-    const photo = slideWidth() * (naturalH / naturalW);
-    const label = caption ? caption.offsetHeight : 0;
-    return photo + label;
+    return slideWidth() * (naturalH / naturalW);
   };
 
   const interpolatedHeight = () => {
