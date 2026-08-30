@@ -167,7 +167,8 @@ a {
 .hero-grid {
   display: grid;
   grid-template-columns: minmax(16rem, 0.92fr) minmax(18rem, 1.18fr);
-  min-height: min(88vh, 940px);
+  min-height: 0;
+  align-items: stretch;
 }
 
 .hero-copy {
@@ -178,6 +179,7 @@ a {
 .hero-gallery-wrap {
   display: flex;
   flex-direction: column;
+  justify-content: center;
   min-height: 0;
   min-width: 0;
   height: 100%;
@@ -282,16 +284,37 @@ a {
 .hero-gallery {
   background: linear-gradient(180deg, #123a5c, #0b2a4a);
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  grid-template-rows: 1fr 1fr;
+  grid-template-columns: minmax(0, 0.88fr) minmax(0, 1.52fr);
+  grid-template-areas:
+    "rack mug"
+    "horn fea";
+  grid-template-rows: auto auto;
   gap: clamp(0.55rem, 1.2vw, 0.9rem);
-  align-content: stretch;
-  flex: 1;
+  align-content: center;
+  align-items: start;
+  flex: 1 1 auto;
   min-height: 0;
   min-width: 0;
-  height: 100%;
+  width: 100%;
+  height: auto;
   padding: clamp(1rem, 2.4vw, 1.6rem);
   scrollbar-width: none;
+}
+
+.hero-gallery .photo-mat-rack {
+  grid-area: rack;
+}
+
+.hero-gallery .photo-mat-horn {
+  grid-area: horn;
+}
+
+.hero-gallery .photo-mat-mug {
+  grid-area: mug;
+}
+
+.hero-gallery .photo-mat-fea {
+  grid-area: fea;
 }
 
 .hero-gallery::-webkit-scrollbar {
@@ -304,19 +327,28 @@ a {
   overflow: hidden;
   min-width: 0;
   min-height: 0;
-  height: 100%;
+  height: auto;
   display: grid;
-  grid-template-rows: minmax(0, 1fr) auto;
+  grid-template-rows: auto auto;
   text-decoration: none;
   color: inherit;
 }
 
 .thumb img {
   width: 100%;
-  height: 100%;
+  height: auto;
   min-height: 0;
-  object-fit: cover;
+  display: block;
+  object-fit: contain;
   background: var(--photo-grade, var(--photo-mat, #e8e8e8));
+}
+
+.thumb-tall img {
+  aspect-ratio: 4 / 5;
+}
+
+.thumb-wide img {
+  aspect-ratio: 3 / 2;
 }
 
 .thumb span {
@@ -453,9 +485,12 @@ a {
 
 .split,
 .profile-grid,
-.work-grid,
 .figure-grid.two {
   grid-template-columns: repeat(auto-fit, minmax(min(100%, 420px), 1fr));
+}
+
+.work-grid {
+  grid-template-columns: 1fr 1fr;
 }
 
 .figure-grid {
@@ -515,9 +550,17 @@ a {
 .work-card img {
   width: 100%;
   height: auto;
-  aspect-ratio: 4 / 3;
-  object-fit: cover;
+  display: block;
+  object-fit: contain;
   background: var(--photo-grade, var(--photo-mat, #e8e8e8));
+}
+
+.work-card-tall img {
+  aspect-ratio: 4 / 5;
+}
+
+.work-card-wide img {
+  aspect-ratio: 3 / 2;
 }
 
 .work-card .body {
@@ -921,6 +964,15 @@ a {
     border-radius: 14px;
     grid-template-columns: none;
     grid-template-rows: none;
+    grid-template-areas: none;
+    align-items: start;
+  }
+
+  .hero-gallery .photo-mat-rack,
+  .hero-gallery .photo-mat-horn,
+  .hero-gallery .photo-mat-mug,
+  .hero-gallery .photo-mat-fea {
+    grid-area: auto;
   }
 
   .hero-gallery .thumb {
@@ -938,7 +990,6 @@ a {
 
   .hero-gallery .thumb img {
     height: auto;
-    aspect-ratio: 3 / 4;
     object-fit: contain;
     background: var(--photo-grade, var(--photo-mat, #e8e8e8));
   }
@@ -980,7 +1031,8 @@ a {
 
   .contact-panel,
   .skills-grid,
-  .workflow-grid {
+  .workflow-grid,
+  .work-grid {
     grid-template-columns: 1fr;
   }
 
