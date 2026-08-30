@@ -59,6 +59,7 @@ const dots = document.querySelector(".gallery-dots");
 if (gallery && dots) {
   const slides = [...gallery.querySelectorAll(".thumb")];
   const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
+  const mobileGallery = window.matchMedia("(max-width: 860px)");
 
   const slideWidth = () => gallery.clientWidth || 1;
 
@@ -68,11 +69,48 @@ if (gallery && dots) {
     return Math.min(max, Math.max(0, Math.round(gallery.scrollLeft / width)));
   };
 
+  const slideHeight = (slide) => {
+    const img = slide.querySelector("img");
+    if (!img) return 0;
+    const naturalW = img.naturalWidth;
+    const naturalH = img.naturalHeight;
+    if (!naturalW || !naturalH) return 0;
+    return slideWidth() * (naturalH / naturalW);
+  };
+
+  const interpolatedHeight = () => {
+    const width = slideWidth();
+    const progress = gallery.scrollLeft / width;
+    const max = Math.max(0, slides.length - 1);
+    const clamped = Math.max(0, Math.min(max, progress));
+    const from = Math.floor(clamped);
+    const to = Math.min(from + 1, max);
+    const t = clamped - from;
+    const start = slideHeight(slides[from]);
+    const end = slideHeight(slides[to]);
+    if (!start || !end) return start || end || 0;
+    return start + (end - start) * t;
+  };
+
+  const applyMobileHeight = (animate) => {
+    if (!mobileGallery.matches) {
+      gallery.style.height = "";
+      gallery.style.transition = "";
+      return;
+    }
+    const next = interpolatedHeight();
+    if (!next) return;
+    const ease = "height 0.42s cubic-bezier(0.22, 1, 0.36, 1)";
+    gallery.style.transition = animate && !reducedMotion.matches ? ease : "none";
+    gallery.style.height = `${next}px`;
+  };
+
   const scrollToSlide = (index, behavior) => {
     const max = Math.max(0, slides.length - 1);
     const next = Math.min(max, Math.max(0, index));
     const smooth = behavior ?? (reducedMotion.matches ? "auto" : "smooth");
     gallery.scrollTo({ left: next * slideWidth(), behavior: smooth });
+    applyMobileHeight(smooth === "smooth");
   };
 
   dots.replaceChildren(
@@ -94,12 +132,30 @@ if (gallery && dots) {
     });
   };
 
-  gallery.addEventListener("scroll", syncDots, { passive: true });
+  gallery.addEventListener(
+    "scroll",
+    () => {
+      syncDots();
+      applyMobileHeight(false);
+    },
+    { passive: true }
+  );
   window.addEventListener("resize", () => {
     scrollToSlide(currentIndex(), "auto");
     syncDots();
+    applyMobileHeight(false);
+  });
+  mobileGallery.addEventListener("change", () => {
+    applyMobileHeight(false);
+  });
+  slides.forEach((slide) => {
+    const img = slide.querySelector("img");
+    if (img && !img.complete) {
+      img.addEventListener("load", () => applyMobileHeight(false), { once: true });
+    }
   });
   syncDots();
+  applyMobileHeight(false);
 }
 
 const hexColor = ([r, g, b]) =>
