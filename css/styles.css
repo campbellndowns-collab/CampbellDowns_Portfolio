@@ -339,16 +339,9 @@ a {
   height: auto;
   min-height: 0;
   display: block;
-  object-fit: contain;
+  aspect-ratio: var(--photo-aspect, auto);
+  object-fit: cover;
   background: var(--photo-grade, var(--photo-mat, #e8e8e8));
-}
-
-.thumb-tall img {
-  aspect-ratio: 4 / 5;
-}
-
-.thumb-wide img {
-  aspect-ratio: 3 / 2;
 }
 
 .thumb span {
@@ -363,6 +356,7 @@ a {
 }
 
 .photo-mat-rack {
+  --photo-aspect: 885 / 1105;
   --photo-grade: radial-gradient(130% 90% at 38% 30%, #fcfcfc 0%, transparent 58%),
     linear-gradient(
       180deg,
@@ -379,6 +373,7 @@ a {
 }
 
 .photo-mat-horn {
+  --photo-aspect: 958 / 1169;
   --photo-grade: linear-gradient(
     180deg,
     #f4f5f9 0%,
@@ -394,6 +389,7 @@ a {
 }
 
 .photo-mat-mug {
+  --photo-aspect: 1028 / 780;
   --photo-grade: linear-gradient(
     180deg,
     #dfdfdf 0%,
@@ -406,6 +402,7 @@ a {
 }
 
 .photo-mat-fea {
+  --photo-aspect: 1067 / 741;
   --photo-grade: linear-gradient(
     180deg,
     #e0e0e0 0%,
@@ -551,16 +548,9 @@ a {
   width: 100%;
   height: auto;
   display: block;
-  object-fit: contain;
+  aspect-ratio: var(--photo-aspect, auto);
+  object-fit: cover;
   background: var(--photo-grade, var(--photo-mat, #e8e8e8));
-}
-
-.work-card-tall img {
-  aspect-ratio: 4 / 5;
-}
-
-.work-card-wide img {
-  aspect-ratio: 3 / 2;
 }
 
 .work-card .body {
@@ -670,6 +660,7 @@ a {
 .hero-figure img {
   width: 100%;
   max-height: 620px;
+  aspect-ratio: var(--photo-aspect, auto);
   object-fit: contain;
   background: var(--photo-grade, var(--photo-mat, #e8e8e8));
 }
@@ -990,7 +981,6 @@ a {
 
   .hero-gallery .thumb img {
     height: auto;
-    object-fit: contain;
     background: var(--photo-grade, var(--photo-mat, #e8e8e8));
   }
 
