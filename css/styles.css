@@ -288,9 +288,10 @@ a {
 
 .hero-gallery {
   --gallery-gap: 0.45rem;
+  --wide-tile-width: clamp(16rem, 28vw, 22.75rem);
   background: transparent;
   display: grid;
-  grid-template-columns: minmax(0, 0.34fr) minmax(0, 0.66fr);
+  grid-template-columns: minmax(0, 1fr) var(--wide-tile-width);
   grid-template-areas:
     "rack mug"
     "horn fea";
@@ -1082,7 +1083,7 @@ a {
   }
 
   .hero-gallery .photo-mat-fea img {
-    object-position: 46% 40%;
+    object-position: 36% 38%;
   }
 
   .work-grid {
