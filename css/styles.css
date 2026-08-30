@@ -166,7 +166,7 @@ a {
 
 .hero-grid {
   display: grid;
-  grid-template-columns: minmax(16rem, 0.92fr) minmax(18rem, 1.18fr);
+  grid-template-columns: minmax(13rem, 0.78fr) minmax(22rem, 1.42fr);
   min-height: min(36rem, 78vh);
   align-items: stretch;
 }
@@ -289,7 +289,7 @@ a {
   --gallery-gap: 0.65rem;
   background: transparent;
   display: grid;
-  grid-template-columns: minmax(0, 0.38fr) minmax(0, 0.62fr);
+  grid-template-columns: minmax(0, 0.28fr) minmax(0, 0.72fr);
   grid-template-areas:
     "rack mug"
     "horn fea";
@@ -525,7 +525,7 @@ a {
 }
 
 .work-grid {
-  grid-template-columns: minmax(0, 0.38fr) minmax(0, 0.62fr);
+  grid-template-columns: minmax(0, 0.28fr) minmax(0, 0.72fr);
   grid-template-areas:
     "rack mug"
     "horn fea";
@@ -620,7 +620,7 @@ a {
 
 .work-card.photo-mat-mug img,
 .work-card.photo-mat-fea img {
-  aspect-ratio: 3 / 2;
+  aspect-ratio: 16 / 9;
 }
 
 .work-card.photo-mat-fea img {
