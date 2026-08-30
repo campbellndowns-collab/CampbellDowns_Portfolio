@@ -167,7 +167,7 @@ a {
 .hero-grid {
   display: grid;
   grid-template-columns: minmax(16rem, 0.92fr) minmax(18rem, 1.18fr);
-  min-height: min(38rem, 80vh);
+  min-height: 0;
   align-items: stretch;
 }
 
@@ -180,9 +180,12 @@ a {
   display: flex;
   flex-direction: column;
   justify-content: center;
+  box-sizing: border-box;
   min-height: 0;
   min-width: 0;
   height: 100%;
+  padding: 1.4rem;
+  overflow: hidden;
 }
 
 .hero-copy {
@@ -282,23 +285,24 @@ a {
 }
 
 .hero-gallery {
-  --gallery-gap: 0.6rem;
-  background: linear-gradient(180deg, #123a5c, #0b2a4a);
+  --gallery-gap: 0.65rem;
+  background: transparent;
   display: grid;
-  grid-template-columns: minmax(0, 0.42fr) minmax(0, 0.58fr);
+  grid-template-columns: minmax(0, 0.37fr) minmax(0, 0.63fr);
   grid-template-areas:
     "rack mug"
     "horn fea";
-  grid-template-rows: minmax(0, 1.06fr) minmax(0, 1fr);
+  grid-template-rows: auto auto;
   gap: var(--gallery-gap);
-  align-content: stretch;
-  align-items: stretch;
-  flex: 1 1 auto;
+  align-content: start;
+  align-items: start;
+  flex: 0 1 auto;
   min-height: 0;
   min-width: 0;
   width: 100%;
-  height: 100%;
-  padding: var(--gallery-gap);
+  height: auto;
+  max-height: 100%;
+  padding: 0;
   scrollbar-width: none;
 }
 
@@ -328,45 +332,33 @@ a {
   overflow: hidden;
   min-width: 0;
   min-height: 0;
-  height: 100%;
+  height: auto;
   position: relative;
-  display: block;
+  display: grid;
+  grid-template-rows: auto auto;
   text-decoration: none;
   color: inherit;
 }
 
 .thumb img {
   width: 100%;
-  height: 100%;
+  height: auto;
   min-height: 0;
   display: block;
-  object-fit: cover;
-  object-position: center;
+  aspect-ratio: var(--photo-aspect, auto);
+  object-fit: contain;
   background: var(--photo-grade, var(--photo-mat, #e8e8e8));
 }
 
-.hero-gallery .photo-mat-fea img {
-  object-position: right center;
-}
-
-.hero-gallery .photo-mat-rack img {
-  object-position: center 38%;
-}
-
 .thumb span {
-  position: absolute;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  z-index: 1;
   font-family: var(--mono);
   font-size: clamp(0.68rem, 0.9vw, 0.78rem);
-  padding: 1.55rem 0.7rem 0.55rem;
+  padding: 0.45rem 0.7rem 0.55rem;
   color: var(--ink-soft);
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
-  background: linear-gradient(180deg, transparent, var(--photo-mat, #e8e8e8) 68%);
+  background: var(--photo-mat, transparent);
 }
 
 .photo-mat-rack {
@@ -426,6 +418,22 @@ a {
     #e5e5e5 100%
   );
   --photo-mat: #e5e5e5;
+}
+
+.photo-mat-rack img {
+  aspect-ratio: 885 / 1105;
+}
+
+.photo-mat-horn img {
+  aspect-ratio: 958 / 1169;
+}
+
+.photo-mat-mug img {
+  aspect-ratio: 1028 / 780;
+}
+
+.photo-mat-fea img {
+  aspect-ratio: 1067 / 741;
 }
 
 .gallery-dots {
@@ -566,7 +574,7 @@ a {
   height: auto;
   display: block;
   aspect-ratio: var(--photo-aspect, auto);
-  object-fit: cover;
+  object-fit: contain;
   background: var(--photo-grade, var(--photo-mat, #e8e8e8));
 }
 
@@ -1002,7 +1010,7 @@ a {
     width: 100%;
     height: auto;
     aspect-ratio: var(--photo-aspect, auto);
-    object-fit: cover;
+    object-fit: contain;
     background: var(--photo-grade, var(--photo-mat, #e8e8e8));
   }
 
