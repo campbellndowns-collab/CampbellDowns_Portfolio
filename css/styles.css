@@ -1049,8 +1049,8 @@ a {
     grid-template-columns: none;
     grid-template-rows: none;
     grid-template-areas: none;
-    align-items: start;
-    align-content: start;
+    align-items: center;
+    align-content: center;
     flex: 0 0 auto;
   }
 
@@ -1070,6 +1070,7 @@ a {
     scroll-snap-align: start;
     scroll-snap-stop: always;
     height: auto;
+    align-self: center;
     border-radius: 14px;
   }
 

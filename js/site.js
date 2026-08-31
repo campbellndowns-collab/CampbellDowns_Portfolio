@@ -87,31 +87,27 @@ if (gallery && dots) {
     return slideWidth() * (naturalH / naturalW);
   };
 
-  const interpolatedHeight = () => {
-    const width = slideWidth();
-    const progress = gallery.scrollLeft / width;
-    const max = Math.max(0, slides.length - 1);
-    const clamped = Math.max(0, Math.min(max, progress));
-    const from = Math.floor(clamped);
-    const to = Math.min(from + 1, max);
-    const t = clamped - from;
-    const start = slideHeight(slides[from]);
-    const end = slideHeight(slides[to]);
-    if (!start || !end) return start || end || 0;
-    return start + (end - start) * t;
+  const maxSlideHeight = () => {
+    let max = 0;
+    slides.forEach((slide) => {
+      max = Math.max(max, slideHeight(slide));
+    });
+    return max;
   };
 
-  const applyMobileHeight = (animate) => {
+  const applyMobileHeight = () => {
     if (!mobileGallery.matches) {
       gallery.style.height = "";
-      gallery.style.transition = "";
       return;
     }
-    const next = interpolatedHeight();
+    const next = maxSlideHeight();
     if (!next) return;
-    const ease = "height 0.42s cubic-bezier(0.22, 1, 0.36, 1)";
-    gallery.style.transition = animate && !reducedMotion.matches ? ease : "none";
     gallery.style.height = `${next}px`;
+  };
+
+  const syncLayout = () => {
+    applyMobileHeight();
+    syncDots();
   };
 
   const scrollToSlide = (index, behavior) => {
@@ -153,7 +149,6 @@ if (gallery && dots) {
   const onScrollSettled = () => {
     window.clearTimeout(scrollEndTimer);
     syncDots();
-    applyMobileHeight(true);
   };
 
   gallery.addEventListener(
@@ -169,19 +164,19 @@ if (gallery && dots) {
   gallery.addEventListener("scrollend", onScrollSettled, { passive: true });
 
   window.addEventListener("resize", () => {
+    syncLayout();
     scrollToSlide(currentIndex(), "auto");
-    onScrollSettled();
   });
   mobileGallery.addEventListener("change", () => {
-    onScrollSettled();
+    syncLayout();
   });
   slides.forEach((slide) => {
     const img = slide.querySelector("img");
     if (img && !img.complete) {
-      img.addEventListener("load", () => onScrollSettled(), { once: true });
+      img.addEventListener("load", () => syncLayout(), { once: true });
     }
   });
-  onScrollSettled();
+  syncLayout();
 }
 
 const hexColor = ([r, g, b]) =>
