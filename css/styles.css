@@ -1030,6 +1030,7 @@ a {
     padding: clamp(1rem, 2.4vw, 1.6rem);
     padding-bottom: 0;
     overflow: hidden;
+    overflow-anchor: none;
     background: linear-gradient(180deg, #123a5c, #0b2a4a);
   }
 
@@ -1038,10 +1039,10 @@ a {
     overflow-x: auto;
     overflow-y: hidden;
     overscroll-behavior-x: contain;
+    overscroll-behavior-y: auto;
     scroll-snap-type: x mandatory;
     scroll-padding-inline: 0;
     -webkit-overflow-scrolling: touch;
-    touch-action: pan-x;
     gap: 0;
     height: auto;
     padding: 0;
@@ -1049,8 +1050,7 @@ a {
     grid-template-columns: none;
     grid-template-rows: none;
     grid-template-areas: none;
-    align-items: center;
-    align-content: center;
+    align-items: stretch;
     flex: 0 0 auto;
   }
 
@@ -1068,15 +1068,21 @@ a {
     min-width: 100%;
     max-width: 100%;
     scroll-snap-align: start;
-    scroll-snap-stop: always;
-    height: auto;
-    align-self: center;
+    scroll-snap-stop: normal;
+    height: 100%;
+    min-height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: stretch;
     border-radius: 14px;
   }
 
   .hero-gallery .thumb img {
     width: 100%;
     height: auto;
+    max-height: 100%;
+    flex: 0 0 auto;
     aspect-ratio: var(--photo-aspect, auto);
     object-fit: cover;
     object-position: center;

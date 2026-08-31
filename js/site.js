@@ -115,11 +115,12 @@ if (gallery && dots) {
     const next = Math.min(max, Math.max(0, index));
     const smooth = behavior ?? (reducedMotion.matches ? "auto" : "smooth");
     const target = slides[next];
-    if (target) {
-      target.scrollIntoView({ behavior: smooth, inline: "start", block: "nearest" });
-    } else {
-      gallery.scrollTo({ left: next * slideWidth(), behavior: smooth });
-    }
+    if (!target) return;
+    gallery.scrollTo({
+      left: target.offsetLeft,
+      top: 0,
+      behavior: smooth,
+    });
   };
 
   dots.replaceChildren(
@@ -163,9 +164,14 @@ if (gallery && dots) {
 
   gallery.addEventListener("scrollend", onScrollSettled, { passive: true });
 
+  let lastGalleryWidth = gallery.clientWidth;
   window.addEventListener("resize", () => {
+    const width = gallery.clientWidth;
     syncLayout();
-    scrollToSlide(currentIndex(), "auto");
+    if (width !== lastGalleryWidth) {
+      scrollToSlide(currentIndex(), "auto");
+      lastGalleryWidth = width;
+    }
   });
   mobileGallery.addEventListener("change", () => {
     syncLayout();
