@@ -487,6 +487,7 @@ a {
   cursor: pointer;
 }
 
+.gallery-dots button[aria-current],
 .gallery-dots button[aria-current="true"] {
   background: var(--steel-bright);
   width: 18px;

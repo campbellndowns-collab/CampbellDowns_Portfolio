@@ -61,12 +61,21 @@ if (gallery && dots) {
   const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
   const mobileGallery = window.matchMedia("(max-width: 860px)");
 
-  const slideWidth = () => gallery.clientWidth || 1;
+  const slideWidth = () => slides[0]?.offsetWidth || gallery.clientWidth || 1;
 
   const currentIndex = () => {
-    const width = slideWidth();
-    const max = Math.max(0, slides.length - 1);
-    return Math.min(max, Math.max(0, Math.round(gallery.scrollLeft / width)));
+    const viewportCenter = gallery.scrollLeft + gallery.clientWidth / 2;
+    let index = 0;
+    let nearest = Infinity;
+    slides.forEach((slide, i) => {
+      const slideCenter = slide.offsetLeft + slide.offsetWidth / 2;
+      const distance = Math.abs(viewportCenter - slideCenter);
+      if (distance < nearest) {
+        nearest = distance;
+        index = i;
+      }
+    });
+    return index;
   };
 
   const slideHeight = (slide) => {
@@ -109,8 +118,12 @@ if (gallery && dots) {
     const max = Math.max(0, slides.length - 1);
     const next = Math.min(max, Math.max(0, index));
     const smooth = behavior ?? (reducedMotion.matches ? "auto" : "smooth");
-    gallery.scrollTo({ left: next * slideWidth(), behavior: smooth });
-    applyMobileHeight(smooth === "smooth");
+    const target = slides[next];
+    if (target) {
+      target.scrollIntoView({ behavior: smooth, inline: "start", block: "nearest" });
+    } else {
+      gallery.scrollTo({ left: next * slideWidth(), behavior: smooth });
+    }
   };
 
   dots.replaceChildren(
@@ -128,34 +141,47 @@ if (gallery && dots) {
   const syncDots = () => {
     const index = currentIndex();
     [...dots.children].forEach((button, i) => {
-      button.toggleAttribute("aria-current", i === index);
+      if (i === index) {
+        button.setAttribute("aria-current", "true");
+      } else {
+        button.removeAttribute("aria-current");
+      }
     });
+  };
+
+  let scrollEndTimer = 0;
+  const onScrollSettled = () => {
+    window.clearTimeout(scrollEndTimer);
+    syncDots();
+    applyMobileHeight(true);
   };
 
   gallery.addEventListener(
     "scroll",
     () => {
       syncDots();
-      applyMobileHeight(false);
+      window.clearTimeout(scrollEndTimer);
+      scrollEndTimer = window.setTimeout(onScrollSettled, 80);
     },
     { passive: true }
   );
+
+  gallery.addEventListener("scrollend", onScrollSettled, { passive: true });
+
   window.addEventListener("resize", () => {
     scrollToSlide(currentIndex(), "auto");
-    syncDots();
-    applyMobileHeight(false);
+    onScrollSettled();
   });
   mobileGallery.addEventListener("change", () => {
-    applyMobileHeight(false);
+    onScrollSettled();
   });
   slides.forEach((slide) => {
     const img = slide.querySelector("img");
     if (img && !img.complete) {
-      img.addEventListener("load", () => applyMobileHeight(false), { once: true });
+      img.addEventListener("load", () => onScrollSettled(), { once: true });
     }
   });
-  syncDots();
-  applyMobileHeight(false);
+  onScrollSettled();
 }
 
 const hexColor = ([r, g, b]) =>
