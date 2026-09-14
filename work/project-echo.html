@@ -22,7 +22,7 @@
       href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Instrument+Serif&family=Source+Sans+3:wght@400;600;700&display=swap"
       rel="stylesheet"
     />
-    <link rel="stylesheet" href="../css/styles.css?v=be1a651d" />
+    <link rel="stylesheet" href="../css/styles.css?v=8759b7bf" />
   </head>
   <body>
     <a class="skip" href="#main">Skip to content</a>
@@ -62,15 +62,64 @@
       </div>
     </header>
 
-    <figure class="hero-figure">
-      <img
-        src="../assets/images/project-echo/hero-render.jpg"
-        alt="Isometric CAD render of the Project ECHO agricultural survey drone"
-        width="1600"
-        height="1000"
-      />
-      <figcaption>Current Project ECHO airframe CAD — complete assembly with propulsion, power, and avionics.</figcaption>
-    </figure>
+    <section class="section echo-hero-viewer" aria-label="Interactive Project ECHO CAD model">
+      <div class="wrap">
+        <p class="echo-hero-viewer-lede">
+          Explore the current airframe — drag to orbit, scroll to zoom, and tap a pin for subsystem
+          details. Pin positions are editable in <code>js/echo-hotspots.js</code>.
+        </p>
+        <div class="echo-viewer-shell" data-echo-viewer>
+          <div class="echo-viewer-toolbar" data-echo-toolbar></div>
+          <div class="echo-viewer-stage">
+            <model-viewer
+              id="echo-model"
+              class="echo-model echo-model-hero"
+              src="../assets/models/project-echo.glb"
+              poster="../assets/images/project-echo/cad-isometric.jpg"
+              alt="Interactive 3D CAD model of the Project ECHO agricultural drone airframe"
+              camera-controls
+              touch-action="pan-y"
+              shadow-intensity="0.85"
+              exposure="1"
+              environment-image="neutral"
+              interaction-prompt="auto"
+              auto-rotate-delay="28000"
+              loading="eager"
+              reveal="auto"
+            >
+              <div class="echo-viewer-fallback" slot="poster">
+                <img
+                  src="../assets/images/project-echo/cad-isometric.jpg"
+                  alt=""
+                  width="1200"
+                  height="900"
+                />
+                <p>
+                  Loading 3D model… Looking for
+                  <code>assets/models/project-echo.glb</code>
+                </p>
+              </div>
+            </model-viewer>
+            <aside class="echo-info-card" data-echo-info hidden></aside>
+          </div>
+          <div class="echo-more-note" data-echo-more>
+            Primary pins are shown by default. Use <strong>Explore more components</strong> for ESC,
+            camera mount, power distribution, and landing structure.
+          </div>
+          <div class="echo-drawer" data-echo-drawer data-open="false">
+            <div class="echo-drawer-head">
+              <strong>Components</strong>
+              <button type="button" class="echo-chip" data-echo-drawer-close>Close</button>
+            </div>
+            <div class="echo-drawer-list" data-echo-drawer-list></div>
+            <div class="echo-drawer-detail" data-echo-drawer-detail hidden></div>
+          </div>
+          <p class="echo-viewer-note" data-echo-model-status>
+            Drag to orbit · scroll or pinch to zoom · tap pins for subsystem notes.
+          </p>
+        </div>
+      </div>
+    </section>
 
     <main id="main">
       <section class="section echo-objectives-section" aria-label="Primary objectives">
@@ -358,77 +407,10 @@
         </div>
       </section>
 
-      <section class="section" id="cad-viewer">
-        <div class="wrap">
-          <div class="section-head">
-            <h2>05 — Explore the Design</h2>
-            <p>Interactive airframe CAD model.</p>
-          </div>
-          <article class="card echo-viewer-intro">
-            <h3>Explore the Current Airframe</h3>
-            <p>
-              Click and drag to inspect the Project ECHO CAD model. Tap a pin for the subsystem,
-              current component (when selected), and development status. Pin coordinates live in
-              <code>js/echo-hotspots.js</code> so they can be adjusted without rewriting the page.
-            </p>
-          </article>
-          <div class="echo-viewer-shell" data-echo-viewer>
-            <div class="echo-viewer-toolbar" data-echo-toolbar></div>
-            <div class="echo-viewer-stage">
-              <model-viewer
-                id="echo-model"
-                class="echo-model"
-                src="../assets/models/project-echo.glb"
-                poster="../assets/images/project-echo/cad-isometric.jpg"
-                alt="Interactive 3D CAD model of the Project ECHO agricultural drone airframe"
-                camera-controls
-                touch-action="pan-y"
-                shadow-intensity="0.85"
-                exposure="1"
-                environment-image="neutral"
-                interaction-prompt="auto"
-                auto-rotate-delay="28000"
-                loading="lazy"
-                reveal="auto"
-              >
-                <div class="echo-viewer-fallback" slot="poster">
-                  <img
-                    src="../assets/images/project-echo/cad-isometric.jpg"
-                    alt=""
-                    width="1200"
-                    height="900"
-                  />
-                  <p>
-                    Loading 3D model… Looking for
-                    <code>assets/models/project-echo.glb</code>
-                  </p>
-                </div>
-              </model-viewer>
-              <aside class="echo-info-card" data-echo-info hidden></aside>
-            </div>
-            <div class="echo-more-note" data-echo-more>
-              Primary pins are shown by default. Use <strong>Explore more components</strong> for ESC,
-              camera mount, storage, power distribution, communications, and landing structure.
-            </div>
-            <div class="echo-drawer" data-echo-drawer data-open="false">
-              <div class="echo-drawer-head">
-                <strong>Components</strong>
-                <button type="button" class="echo-chip" data-echo-drawer-close>Close</button>
-              </div>
-              <div class="echo-drawer-list" data-echo-drawer-list></div>
-              <div class="echo-drawer-detail" data-echo-drawer-detail hidden></div>
-            </div>
-            <p class="echo-viewer-note" data-echo-model-status>
-              Drag to orbit · scroll or pinch to zoom · tap pins for subsystem notes.
-            </p>
-          </div>
-        </div>
-      </section>
-
       <section class="section" id="mechanical">
         <div class="wrap">
           <div class="section-head">
-            <h2>06 — Mechanical Design</h2>
+            <h2>05 — Mechanical Design</h2>
             <p>Complete-assembly CAD for packaging and structure.</p>
           </div>
           <article class="card">
@@ -472,7 +454,7 @@
       <section class="section" id="structural">
         <div class="wrap">
           <div class="section-head">
-            <h2>07 — Structural Analysis</h2>
+            <h2>06 — Structural Analysis</h2>
             <p>FEA and modal evaluation before physical testing.</p>
           </div>
           <div class="echo-status card">
@@ -511,7 +493,7 @@
       <section class="section" id="multidisciplinary">
         <div class="wrap">
           <div class="section-head">
-            <h2>08 — Multidisciplinary Integration</h2>
+            <h2>07 — Multidisciplinary Integration</h2>
             <p>Aerospace decisions constrained by electrical and software needs.</p>
           </div>
           <p class="echo-lede">
@@ -558,7 +540,7 @@
       <section class="section" id="roadmap">
         <div class="wrap">
           <div class="section-head">
-            <h2>09 — Current Development</h2>
+            <h2>08 — Current Development</h2>
             <p>Project roadmap from mission definition to validation.</p>
           </div>
           <ol class="echo-roadmap">
@@ -616,7 +598,7 @@
     </footer>
     <script src="../js/site.js?v=5714c710"></script>
     <script type="module" src="https://ajax.googleapis.com/ajax/libs/model-viewer/3.5.0/model-viewer.min.js"></script>
-    <script src="../js/echo-hotspots.js?v=8165975b"></script>
+    <script src="../js/echo-hotspots.js?v=691311bd"></script>
     <script src="../js/echo-viewer.js?v=59202f5a"></script>
   </body>
 </html>
