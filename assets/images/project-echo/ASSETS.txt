@@ -1,21 +1,26 @@
 Project ECHO image assets
 =========================
-Replace each SVG placeholder with a matching render (JPG or WebP preferred).
-Keep the same base filename (without .svg) so the page picks it up after you update the HTML src, or overwrite by converting and changing extensions in work/project-echo.html.
 
-Expected files:
-  hero-render.jpg          Full-width hero CAD render
-  cad-isometric.jpg        Overall isometric view (also used as model-viewer poster)
-  cad-top.jpg              Top view
-  cad-exploded.jpg         Exploded assembly
-  structural-detail.jpg    Close structural detail
-  component-layout.jpg     Internal packaging / CG layout
-  fea-stress.jpg           Static structural / stress or FOS
-  fea-displacement.jpg     Displacement plot
-  modal-analysis.jpg       Modal analysis / mode shape
-  optimization-endurance.jpg  Endurance vs mass (or related) plot
-  optimization-cost.jpg       Cost vs endurance plot
-  card.jpg                 Index / work-card thumbnail
+Provided CAD renders (from SolidWorks screenshots):
+  hero-render.jpg       Corner isometric (hero)
+  cad-isometric.jpg     Corner isometric (poster + gallery)
+  cad-top.jpg           Top-down view
+  cad-front.jpg         Front elevation
+  cad-front-iso.jpg     Front-top isometric
+  card.jpg              Homepage thumbnail
+
+Still optional / placeholders:
+  cad-exploded.jpg
+  structural-detail.jpg
+  component-layout.jpg
+  fea-stress.jpg
+  fea-displacement.jpg
+  modal-analysis.jpg
+  optimization-endurance.jpg
+  optimization-cost.jpg
 
 3D model:
   ../../models/project-echo.glb
+
+Hotspots:
+  Edit ../../../../js/echo-hotspots.js (position / normal strings)
