@@ -1,14 +1,29 @@
 /**
  * Project ECHO model-viewer hotspot data
- * --------------------------------------
- * Edit `position` / `normal` for each pin (model-space meters).
+ * ======================================
  *
- * Positions were retuned from named SolidWorks GLB nodes to match the
- * top / front / isometric reference renders (X-frame, batteries flanking
- * the center stack, GPS on mast, cameras under the deck).
- * Nudge any pin that still looks off after orbiting the model.
+ * HOW TO MOVE A PIN
+ * -----------------
+ * 1. Open this file: js/echo-hotspots.js
+ * 2. Find the pin by `id` (for example "propulsion" or "batteries").
+ * 3. Edit the `position` string: "x y z" in model-space meters.
+ *    - First number  (x): left / right
+ *    - Second number (y): up / down
+ *    - Third number  (z): forward / back
+ * 4. Optional: edit `normal` (which way the pin faces), usually "0 1 0".
+ * 5. Save the file, hard-refresh the Project ECHO page (Ctrl/Cmd+Shift+R).
+ * 6. Orbit the model and nudge again in small steps (0.01–0.05 at a time).
  *
- * Format: position/normal are strings "x y z" for model-viewer attributes.
+ * Tips
+ * ----
+ * - Click a pin, then adjust its position until the camera focus looks right.
+ * - If a pin disappears behind geometry, raise `y` slightly or flip `normal`.
+ * - After editing, bump the ?v= hash on echo-hotspots.js in work/project-echo.html
+ *   if your browser keeps serving a cached copy.
+ *
+ * priority:
+ *   "primary"   → shown by default
+ *   "secondary" → behind "Explore more components"
  */
 window.ECHO_HOTSPOTS = [
   {
@@ -20,38 +35,22 @@ window.ECHO_HOTSPOTS = [
     description:
       "The airframe supports the propulsion, battery, avionics, and imaging systems while maintaining the required motor spacing and propeller clearance. Its geometry is being developed around structural stiffness, component packaging, center-of-mass placement, manufacturability, and minimum practical mass.",
     status: "Current CAD design",
-    // TopCenterBracket — center deck
     position: "0 0.03 0",
     normal: "0 1 0",
     priority: "primary",
     accent: "blue",
   },
   {
-    id: "motor",
-    title: "Brushless Motor",
+    id: "propulsion",
+    title: "Propulsion System",
     category: "Propulsion",
     filters: ["Propulsion"],
-    component: "SunnySky V4008-380",
+    component: "SunnySky V4008-380 with 17 × 6.2 propeller",
     description:
-      "The current propulsion configuration uses a SunnySky V4008-380 brushless motor. The motor was evaluated as part of an endurance-focused trade study considering hover efficiency, operating voltage, propeller compatibility, motor mass, thrust capability, and electrical loading.",
+      "The current propulsion configuration pairs a SunnySky V4008-380 brushless motor with a 17 × 6.2 propeller. The combination was evaluated through endurance-focused trade studies covering hover efficiency, operating voltage, propeller compatibility, motor mass, thrust capability, electrical loading, airframe dimensions, structural loads, and propeller clearance.",
     status: "Current candidate configuration",
-    // SunnySky prop-clamp node on one X-frame arm
-    position: "0.275 0.268 0.06",
-    normal: "0 1 0",
-    priority: "primary",
-    accent: "orange",
-  },
-  {
-    id: "propeller",
-    title: "17 × 6.2 Propeller",
-    category: "Propulsion",
-    filters: ["Propulsion"],
-    component: "17-inch diameter, 6.2-inch pitch propeller",
-    description:
-      "The current 17 × 6.2 propeller configuration was selected for evaluation with the SunnySky V4008-380 motor. Larger propellers can improve hover efficiency, but they also affect motor loading, airframe dimensions, structural loads, and propeller clearance.",
-    status: "Current candidate configuration",
-    // Slightly outboard / above the same arm motor
-    position: "0.31 0.30 0.09",
+    // One representative arm tip (motor + propeller station)
+    position: "0.29 0.28 0.07",
     normal: "0 1 0",
     priority: "primary",
     accent: "orange",
@@ -65,22 +64,20 @@ window.ECHO_HOTSPOTS = [
     description:
       "Each motor is controlled by an electronic speed controller. The ESC must support the selected battery voltage and motor current while providing sufficient electrical and thermal margin. Final ESC selection remains dependent on propulsion testing and current validation.",
     status: "Selection in progress",
-    // Mid-arm toward the annotated motor (ESC sits on the arm in the renders)
     position: "0.16 0.15 0.04",
     normal: "0 1 0",
     priority: "secondary",
     accent: "yellow",
   },
   {
-    id: "battery",
-    title: "4S Battery System",
+    id: "batteries",
+    title: "Batteries",
     category: "Power",
     filters: ["Power"],
     component: "4S nominal electrical system",
     description:
-      "The battery system supplies propulsion and avionics power. Battery capacity is being selected by balancing usable energy, battery mass, voltage sag, discharge capability, packaging, cost, and predicted endurance. The battery is positioned near the aircraft center to reduce center-of-gravity movement.",
+      "The battery system supplies propulsion and avionics power. Battery capacity is being selected by balancing usable energy, battery mass, voltage sag, discharge capability, packaging, cost, and predicted endurance. The packs are positioned near the aircraft center to reduce center-of-gravity movement.",
     status: "Architecture selected; final pack selection in progress",
-    // One of the two packs flanking the center stack (right tray / pack region)
     position: "0.11 0.09 0.02",
     normal: "0 1 0",
     priority: "primary",
@@ -95,7 +92,6 @@ window.ECHO_HOTSPOTS = [
     description:
       "The flight controller manages aircraft stabilization, sensor inputs, navigation data, motor commands, flight logging, and safety functions. Central placement reduces wiring complexity and helps isolate the inertial sensors from unnecessary vibration and electromagnetic interference.",
     status: "Current selected component",
-    // Kakute H743-Wing node — central electronics
     position: "0 0.02 0.04",
     normal: "0 1 0",
     priority: "primary",
@@ -111,7 +107,6 @@ window.ECHO_HOTSPOTS = [
       "The navigation system provides aircraft position and groundspeed data. A compatible external compass may also be used to provide heading information. Placement must reduce interference from motors, ESCs, batteries, and high-current wiring.",
     status: "Integration in progress",
     note: "Compass inclusion depends on the exact GPS module variant purchased.",
-    // MastGPSHolder / Micro M10 — elevated mast away from the deck
     position: "0 0.15 -0.1",
     normal: "0 1 0",
     priority: "primary",
@@ -119,46 +114,17 @@ window.ECHO_HOTSPOTS = [
   },
   {
     id: "imaging-system",
-    title: "RGB + Near-Infrared Imaging System",
+    title: "Imaging System",
     category: "Imaging Payload",
     filters: ["Imaging"],
     component: null,
     description:
       "Downward-facing RGB and near-infrared cameras capture survey imagery for later analysis. Visible imagery provides context; near-infrared imagery supports vegetation-index work such as NDVI when paired and aligned in post-flight processing. Final camera and optical-filter selections are still in progress.",
     status: "Final camera and filter selection in progress",
-    // RPi Camera Module 3 RGB / NoIR under the deck
+    note: "Exact spectral range is omitted until the selected sensor and optical filter are confirmed.",
     position: "0 -0.03 0",
     normal: "0 -1 0",
     priority: "primary",
-    accent: "cyan",
-  },
-  {
-    id: "rgb-camera",
-    title: "RGB Imaging Camera",
-    category: "Imaging Payload",
-    filters: ["Imaging"],
-    component: null,
-    description:
-      "The RGB camera captures conventional visible-light imagery of the survey area. These images provide visual context and may be aligned with near-infrared imagery during post-flight agricultural analysis.",
-    status: "Final camera selection in progress",
-    position: "0.012 -0.03 0",
-    normal: "0 -1 0",
-    priority: "detail",
-    accent: "cyan",
-  },
-  {
-    id: "nir-camera",
-    title: "Near-Infrared Camera",
-    category: "Imaging Payload",
-    filters: ["Imaging"],
-    component: null,
-    description:
-      "The near-infrared imaging system captures wavelengths associated with vegetation reflectance. When paired and aligned with visible imagery, the data can support vegetation-index analysis such as NDVI.",
-    status: "Final camera and filter selection in progress",
-    note: "Exact spectral range is omitted until the selected sensor and optical filter are confirmed.",
-    position: "-0.012 -0.03 0",
-    normal: "0 -1 0",
-    priority: "detail",
     accent: "cyan",
   },
   {
@@ -176,21 +142,6 @@ window.ECHO_HOTSPOTS = [
     accent: "blue",
   },
   {
-    id: "data-storage",
-    title: "Onboard Data Storage",
-    category: "Data System",
-    filters: ["Imaging", "Avionics"],
-    component: null,
-    description:
-      "Survey imagery is stored onboard during flight for later transfer and processing. The current system does not require live image streaming or onboard vegetation analysis, reducing communications and computing requirements during flight.",
-    status: "Architecture defined; hardware selection in progress",
-    // Near central compute stack (Raspberry Pi region in the CAD)
-    position: "0.01 0.07 0.05",
-    normal: "0 1 0",
-    priority: "secondary",
-    accent: "cyan",
-  },
-  {
     id: "power-distribution",
     title: "Power Distribution",
     category: "Electrical",
@@ -205,21 +156,6 @@ window.ECHO_HOTSPOTS = [
     accent: "yellow",
   },
   {
-    id: "communications",
-    title: "Command and Telemetry",
-    category: "Communications",
-    filters: ["Communications"],
-    component: null,
-    description:
-      "The communications system provides pilot command authority and may transmit basic aircraft telemetry. The antenna installation must maintain reliable signal reception while remaining protected from the propellers and landing environment.",
-    status: "Hardware selection in progress",
-    // Ebyte radio / antenna region toward the aft deck edge
-    position: "0.07 0.06 0.04",
-    normal: "0 1 0",
-    priority: "secondary",
-    accent: "purple",
-  },
-  {
     id: "landing-gear",
     title: "Landing Structure",
     category: "Structures",
@@ -228,7 +164,6 @@ window.ECHO_HOTSPOTS = [
     description:
       "The landing structure protects the airframe and downward-facing imaging payload during takeoff and landing. It must provide sufficient ground clearance and stability without adding unnecessary mass or obstructing the cameras’ field of view.",
     status: "In development",
-    // Carbon-tube landing member below the deck
     position: "-0.02 -0.35 0",
     normal: "0 0 1",
     priority: "secondary",
@@ -242,5 +177,4 @@ window.ECHO_HOTSPOT_FILTERS = [
   "Power",
   "Avionics",
   "Imaging",
-  "Communications",
 ];

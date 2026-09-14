@@ -1396,6 +1396,28 @@ a {
   font-size: 0.95rem;
 }
 
+.echo-hero-viewer {
+  padding-top: 0.6rem;
+  padding-bottom: clamp(1.5rem, 4vw, 2.5rem);
+}
+
+.echo-hero-viewer-lede {
+  margin: 0 0 0.85rem;
+  max-width: 46rem;
+  color: var(--muted);
+  font-size: 0.98rem;
+}
+
+.echo-model-hero {
+  height: min(78vh, 40rem);
+}
+
+@media (max-width: 720px) {
+  .echo-model-hero {
+    height: min(62vh, 28rem);
+  }
+}
+
 .echo-viewer-intro {
   margin-bottom: 1rem;
 }
