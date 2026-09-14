@@ -22,7 +22,7 @@
       href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Instrument+Serif&family=Source+Sans+3:wght@400;600;700&display=swap"
       rel="stylesheet"
     />
-    <link rel="stylesheet" href="../css/styles.css?v=728e6b76" />
+    <link rel="stylesheet" href="../css/styles.css?v=be1a651d" />
   </head>
   <body>
     <a class="skip" href="#main">Skip to content</a>
@@ -369,117 +369,60 @@
           </div>
           <article class="card echo-viewer-intro">
             <h3>Explore the Current Airframe</h3>
-            <p>Click and drag to inspect the current Project ECHO CAD model. Scroll or pinch to zoom.</p>
+            <p>
+              Click and drag to inspect the Project ECHO CAD model. Tap a pin for the subsystem,
+              current component (when selected), and development status. Pin coordinates live in
+              <code>js/echo-hotspots.js</code> so they can be adjusted without rewriting the page.
+            </p>
           </article>
-          <div class="echo-viewer-shell">
-            <!--
-              GLB path: ../assets/models/project-echo.glb
-              Hotspot data-position / data-normal values below are placeholders.
-              After exporting the GLB, open this page, enable the model-viewer inspector
-              or trial-and-error adjust each data-position="x y z" (model space meters).
-            -->
-            <model-viewer
-              id="echo-model"
-              class="echo-model"
-              src="../assets/models/project-echo.glb"
-              poster="../assets/images/project-echo/cad-isometric.svg"
-              alt="Interactive 3D CAD model of the Project ECHO agricultural drone airframe"
-              camera-controls
-              touch-action="pan-y"
-              shadow-intensity="0.85"
-              exposure="1"
-              environment-image="neutral"
-              interaction-prompt="auto"
-              loading="lazy"
-              reveal="auto"
-            >
-              <button
-                type="button"
-                class="echo-hotspot"
-                slot="hotspot-propulsion"
-                data-position="0.35 0.05 0.15"
-                data-normal="0 1 0"
-                data-visibility-attribute="visible"
+          <div class="echo-viewer-shell" data-echo-viewer>
+            <div class="echo-viewer-toolbar" data-echo-toolbar></div>
+            <div class="echo-viewer-stage">
+              <model-viewer
+                id="echo-model"
+                class="echo-model"
+                src="../assets/models/project-echo.glb"
+                poster="../assets/images/project-echo/cad-isometric.svg"
+                alt="Interactive 3D CAD model of the Project ECHO agricultural drone airframe"
+                camera-controls
+                touch-action="pan-y"
+                shadow-intensity="0.85"
+                exposure="1"
+                environment-image="neutral"
+                interaction-prompt="auto"
+                auto-rotate-delay="28000"
+                loading="lazy"
+                reveal="auto"
               >
-                <span class="echo-hotspot-dot" aria-hidden="true"></span>
-                <span class="echo-hotspot-label">
-                  <strong>Propulsion system</strong>
-                  Motor and propeller configuration selected through endurance-focused system trade studies.
-                </span>
-              </button>
-              <button
-                type="button"
-                class="echo-hotspot"
-                slot="hotspot-imaging"
-                data-position="0 0.02 -0.1"
-                data-normal="0 1 0"
-                data-visibility-attribute="visible"
-              >
-                <span class="echo-hotspot-dot" aria-hidden="true"></span>
-                <span class="echo-hotspot-label">
-                  <strong>Imaging payload</strong>
-                  RGB + near-infrared sensing intended to support vegetation analysis such as NDVI.
-                </span>
-              </button>
-              <button
-                type="button"
-                class="echo-hotspot"
-                slot="hotspot-fc"
-                data-position="0 0.08 0"
-                data-normal="0 1 0"
-                data-visibility-attribute="visible"
-              >
-                <span class="echo-hotspot-dot" aria-hidden="true"></span>
-                <span class="echo-hotspot-label">
-                  <strong>Flight controller</strong>
-                  Central flight-control hardware integrating aircraft sensors and control systems.
-                </span>
-              </button>
-              <button
-                type="button"
-                class="echo-hotspot"
-                slot="hotspot-battery"
-                data-position="0 -0.02 0.12"
-                data-normal="0 1 0"
-                data-visibility-attribute="visible"
-              >
-                <span class="echo-hotspot-dot" aria-hidden="true"></span>
-                <span class="echo-hotspot-label">
-                  <strong>Battery system</strong>
-                  Selected by balancing usable energy, mass, current capability, and system cost.
-                </span>
-              </button>
-              <button
-                type="button"
-                class="echo-hotspot"
-                slot="hotspot-airframe"
-                data-position="-0.25 0.04 0"
-                data-normal="0 1 0"
-                data-visibility-attribute="visible"
-              >
-                <span class="echo-hotspot-dot" aria-hidden="true"></span>
-                <span class="echo-hotspot-label">
-                  <strong>Airframe</strong>
-                  Structural layout developed around propulsion geometry, packaging, stiffness, strength, and weight.
-                </span>
-              </button>
-
-              <div class="echo-viewer-fallback" slot="poster">
-                <img
-                  src="../assets/images/project-echo/cad-isometric.svg"
-                  alt=""
-                  width="1200"
-                  height="900"
-                />
-                <p>
-                  Loading 3D model… If nothing appears, add
-                  <code>assets/models/project-echo.glb</code>
-                </p>
+                <div class="echo-viewer-fallback" slot="poster">
+                  <img
+                    src="../assets/images/project-echo/cad-isometric.svg"
+                    alt=""
+                    width="1200"
+                    height="900"
+                  />
+                  <p>
+                    Loading 3D model… Looking for
+                    <code>assets/models/project-echo.glb</code>
+                  </p>
+                </div>
+              </model-viewer>
+              <aside class="echo-info-card" data-echo-info hidden></aside>
+            </div>
+            <div class="echo-more-note" data-echo-more>
+              Primary pins are shown by default. Use <strong>Explore more components</strong> for ESC,
+              camera mount, storage, power distribution, communications, and landing structure.
+            </div>
+            <div class="echo-drawer" data-echo-drawer data-open="false">
+              <div class="echo-drawer-head">
+                <strong>Components</strong>
+                <button type="button" class="echo-chip" data-echo-drawer-close>Close</button>
               </div>
-            </model-viewer>
+              <div class="echo-drawer-list" data-echo-drawer-list></div>
+              <div class="echo-drawer-detail" data-echo-drawer-detail hidden></div>
+            </div>
             <p class="echo-viewer-note" data-echo-model-status>
-              Model file expected at <code>assets/models/project-echo.glb</code>. Until that file is
-              present, the isometric poster above is shown.
+              Drag to orbit · scroll or pinch to zoom · tap pins for subsystem notes.
             </p>
           </div>
         </div>
@@ -676,6 +619,7 @@
     </footer>
     <script src="../js/site.js?v=5714c710"></script>
     <script type="module" src="https://ajax.googleapis.com/ajax/libs/model-viewer/3.5.0/model-viewer.min.js"></script>
-    <script src="../js/echo-viewer.js?v=f1286cc0"></script>
+    <script src="../js/echo-hotspots.js?v=a662d1d6"></script>
+    <script src="../js/echo-viewer.js?v=59202f5a"></script>
   </body>
 </html>
