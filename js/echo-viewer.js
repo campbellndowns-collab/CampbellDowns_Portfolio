@@ -4,7 +4,6 @@
   if (!viewer || !shell) return;
 
   const hotspots = window.ECHO_HOTSPOTS || [];
-  const filterNames = window.ECHO_HOTSPOT_FILTERS || [];
   const status = shell.querySelector("[data-echo-model-status]");
   const toolbar = shell.querySelector("[data-echo-toolbar]");
   const infoCard = shell.querySelector("[data-echo-info]");
@@ -14,12 +13,9 @@
   const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
   const mobileQuery = window.matchMedia("(max-width: 720px)");
 
-  // Idle auto-rotate wait (ms). Default model-viewer delay is 3000.
   const AUTO_ROTATE_DELAY_MS = 28000;
 
-  let activeFilter = "all";
   let pinsVisible = true;
-  let showSecondary = false;
   let selectedId = null;
 
   const parsePosition = (value) =>
@@ -27,6 +23,13 @@
       .trim()
       .split(/\s+/)
       .map(Number);
+
+  const escapeHtml = (value) =>
+    String(value ?? "")
+      .replaceAll("&", "&amp;")
+      .replaceAll("<", "&lt;")
+      .replaceAll(">", "&gt;")
+      .replaceAll('"', "&quot;");
 
   const setAutoRotate = () => {
     if (reducedMotion.matches) {
@@ -38,77 +41,121 @@
     viewer.setAttribute("rotation-per-second", "10deg");
   };
 
-  const isPinActive = (spot) => {
-    if (!pinsVisible) return false;
-    if (activeFilter !== "all" && !(spot.filters || []).includes(activeFilter)) {
-      return false;
-    }
-    if (spot.priority === "primary") return true;
-    if (spot.priority === "detail") return false;
-    return showSecondary;
-  };
-
   const focusHotspot = (spot) => {
     const [x, y, z] = parsePosition(spot.position);
     if ([x, y, z].some((n) => Number.isNaN(n))) return;
-    const target = `${x}m ${y}m ${z}m`;
     try {
-      viewer.cameraTarget = target;
-      if (!reducedMotion.matches) {
-        viewer.cameraOrbit = "auto auto 65%";
-      }
+      viewer.cameraTarget = `${x}m ${y}m ${z}m`;
+      if (!reducedMotion.matches) viewer.cameraOrbit = "auto auto 65%";
     } catch {
-      /* Older model-viewer builds may ignore camera setters. */
+      /* ignore */
     }
+  };
+
+  const componentMeta = (item) => {
+    const bits = [];
+    if (item.quantity != null) bits.push(`Qty ${item.quantity}`);
+    if (item.purchaseQuantity) bits.push(item.purchaseQuantity);
+    if (item.aircraftQuantity != null && item.totalSystemQuantity != null) {
+      bits.push(`Aircraft ${item.aircraftQuantity} · System ${item.totalSystemQuantity}`);
+    }
+    if (item.integration) bits.push(item.integration);
+    return bits.join(" · ");
+  };
+
+  const componentDetails = (item) => {
+    const specs = (item.specifications || [])
+      .map((spec) => `<li>${escapeHtml(spec)}</li>`)
+      .join("");
+    const extras = [
+      item.integration ? `<p><strong>Integration:</strong> ${escapeHtml(item.integration)}</p>` : "",
+      specs ? `<ul class="echo-spec-list">${specs}</ul>` : "",
+    ].join("");
+    return extras;
+  };
+
+  const renderCardBody = (spot) => {
+    const components = (spot.components || [])
+      .map((item, index) => {
+        const meta = componentMeta(item);
+        const details = componentDetails(item);
+        return `
+          <details class="echo-component" ${index === 0 ? "" : ""}>
+            <summary>
+              <span class="echo-component-type">${escapeHtml(item.type)}</span>
+              <span class="echo-component-product">${escapeHtml(item.product)}</span>
+              ${meta ? `<span class="echo-component-meta">${escapeHtml(meta)}</span>` : ""}
+            </summary>
+            <p>${escapeHtml(item.purpose || "")}</p>
+            ${details}
+          </details>`;
+      })
+      .join("");
+
+    return `
+      <p class="echo-info-kicker">${escapeHtml(spot.category)}</p>
+      <h3>${escapeHtml(spot.title)}</h3>
+      <p class="echo-info-summary">${escapeHtml(spot.summary || "")}</p>
+      <div class="echo-component-list">
+        <p class="echo-info-kicker">Components</p>
+        ${components}
+      </div>
+      <p class="echo-info-description">${escapeHtml(spot.description || "")}</p>
+      <p class="echo-info-status"><span>Status</span> ${escapeHtml(spot.status)}</p>
+    `;
   };
 
   const renderInfo = (spot) => {
     if (!infoCard) return;
-    if (!spot) {
+    if (!spot || mobileQuery.matches) {
       infoCard.hidden = true;
       infoCard.innerHTML = "";
       return;
     }
-
-    const component = spot.component
-      ? `<p class="echo-info-component"><span>Component</span> ${spot.component}</p>`
-      : "";
-    const note = spot.note ? `<p class="echo-info-note">${spot.note}</p>` : "";
-
     infoCard.hidden = false;
     infoCard.dataset.accent = spot.accent || "blue";
     infoCard.innerHTML = `
-      <button type="button" class="echo-info-close" data-echo-close aria-label="Close component details">×</button>
-      <p class="echo-info-kicker">${spot.category}</p>
-      <h3>${spot.title}</h3>
-      ${component}
-      <p>${spot.description}</p>
-      ${note}
-      <p class="echo-info-status"><span>Status</span> ${spot.status}</p>
+      <button type="button" class="echo-info-close" data-echo-close aria-label="Close subsystem details">×</button>
+      ${renderCardBody(spot)}
     `;
+  };
+
+  const clearHighlights = () => {
+    viewer.querySelectorAll("[data-echo-highlight]").forEach((node) => node.remove());
+  };
+
+  const showHighlights = (spot) => {
+    clearHighlights();
+    (spot.highlights || []).forEach((mark) => {
+      const el = document.createElement("button");
+      el.type = "button";
+      el.className = `echo-highlight accent-${spot.accent || "blue"}`;
+      el.slot = `hotspot-hl-${spot.id}-${mark.id}`;
+      el.dataset.echoHighlight = mark.id;
+      el.dataset.position = mark.position;
+      el.dataset.normal = mark.normal || "0 1 0";
+      el.dataset.visibilityAttribute = "visible";
+      el.setAttribute("tabindex", "-1");
+      el.setAttribute("aria-hidden", "true");
+      el.innerHTML = `<span class="echo-highlight-dot"></span><span class="echo-highlight-label">${escapeHtml(
+        mark.label || ""
+      )}</span>`;
+      viewer.append(el);
+    });
   };
 
   const syncPins = () => {
     hotspots.forEach((spot) => {
       const pin = viewer.querySelector(`[data-hotspot-id="${spot.id}"]`);
       if (!pin) return;
-      const active = isPinActive(spot);
-      pin.hidden = !active;
+      pin.hidden = !pinsVisible;
       pin.classList.toggle("is-selected", spot.id === selectedId);
       pin.setAttribute("aria-pressed", spot.id === selectedId ? "true" : "false");
     });
-
-    if (morePanel) {
-      morePanel.hidden = !pinsVisible || activeFilter !== "all";
-    }
     if (drawer) {
       drawer.querySelectorAll("[data-drawer-id]").forEach((btn) => {
-        const spot = hotspots.find((item) => item.id === btn.dataset.drawerId);
-        const show = spot && (spot.priority === "primary" || showSecondary || spot.priority === "detail");
-        const filterOk =
-          !spot || activeFilter === "all" || (spot.filters || []).includes(activeFilter);
-        btn.hidden = !(pinsVisible && show && filterOk && spot.priority !== "detail");
-        btn.classList.toggle("is-selected", spot && spot.id === selectedId);
+        btn.hidden = !pinsVisible;
+        btn.classList.toggle("is-selected", btn.dataset.drawerId === selectedId);
       });
     }
   };
@@ -117,25 +164,14 @@
     const spot = hotspots.find((item) => item.id === id);
     if (!spot) return;
     selectedId = id;
-    if (spot.priority === "secondary") showSecondary = true;
-    renderInfo(mobileQuery.matches ? null : spot);
+    renderInfo(spot);
+    showHighlights(spot);
     if (mobileQuery.matches && drawer) {
       drawer.dataset.open = "true";
       const detail = drawer.querySelector("[data-echo-drawer-detail]");
       if (detail) {
         detail.hidden = false;
-        detail.innerHTML = `
-          <p class="echo-info-kicker">${spot.category}</p>
-          <h3>${spot.title}</h3>
-          ${
-            spot.component
-              ? `<p class="echo-info-component"><span>Component</span> ${spot.component}</p>`
-              : ""
-          }
-          <p>${spot.description}</p>
-          ${spot.note ? `<p class="echo-info-note">${spot.note}</p>` : ""}
-          <p class="echo-info-status"><span>Status</span> ${spot.status}</p>
-        `;
+        detail.innerHTML = renderCardBody(spot);
       }
     }
     focusHotspot(spot);
@@ -145,19 +181,19 @@
   const clearSelection = () => {
     selectedId = null;
     renderInfo(null);
+    clearHighlights();
     const detail = drawer?.querySelector("[data-echo-drawer-detail]");
     if (detail) {
       detail.hidden = true;
       detail.innerHTML = "";
     }
+    if (drawer) drawer.dataset.open = "false";
     syncPins();
   };
 
   const buildPins = () => {
     hotspots.forEach((spot) => {
-      const existing = viewer.querySelector(`[data-hotspot-id="${spot.id}"]`);
-      if (existing) existing.remove();
-
+      viewer.querySelector(`[data-hotspot-id="${spot.id}"]`)?.remove();
       const button = document.createElement("button");
       button.type = "button";
       button.className = `echo-hotspot accent-${spot.accent || "blue"}`;
@@ -169,7 +205,7 @@
       button.setAttribute("aria-label", spot.title);
       button.innerHTML = `
         <span class="echo-hotspot-dot" aria-hidden="true"></span>
-        <span class="echo-hotspot-title">${spot.title}</span>
+        <span class="echo-hotspot-title">${escapeHtml(spot.title)}</span>
       `;
       button.addEventListener("click", (event) => {
         event.stopPropagation();
@@ -182,21 +218,9 @@
 
   const buildToolbar = () => {
     if (!toolbar) return;
-    const filters = ["all", ...filterNames]
-      .map((name) => {
-        const label = name === "all" ? "All" : name;
-        const pressed = activeFilter === name ? "true" : "false";
-        return `<button type="button" class="echo-chip" data-echo-filter="${name}" aria-pressed="${pressed}">${label}</button>`;
-      })
-      .join("");
-
     toolbar.innerHTML = `
-      <div class="echo-chip-row" role="toolbar" aria-label="Subsystem filters">
-        ${filters}
-      </div>
       <div class="echo-chip-row">
         <button type="button" class="echo-chip" data-echo-toggle-pins aria-pressed="true">Hide pins</button>
-        <button type="button" class="echo-chip" data-echo-toggle-more aria-pressed="false">Explore more components</button>
       </div>
     `;
   };
@@ -204,14 +228,13 @@
   const buildDrawerList = () => {
     if (!drawerList) return;
     drawerList.innerHTML = hotspots
-      .filter((spot) => spot.priority === "primary" || spot.priority === "secondary")
       .map(
         (spot) => `
         <button type="button" class="echo-drawer-item accent-${spot.accent || "blue"}" data-drawer-id="${spot.id}">
           <span class="echo-drawer-dot" aria-hidden="true"></span>
           <span>
-            <strong>${spot.title}</strong>
-            <small>${spot.category}${spot.component ? ` · ${spot.component}` : ""}</small>
+            <strong>${escapeHtml(spot.title)}</strong>
+            <small>${escapeHtml(spot.category)}</small>
           </span>
         </button>`
       )
@@ -219,34 +242,13 @@
   };
 
   toolbar?.addEventListener("click", (event) => {
-    const target = event.target.closest("button");
+    const target = event.target.closest("[data-echo-toggle-pins]");
     if (!target) return;
-
-    if (target.matches("[data-echo-filter]")) {
-      activeFilter = target.dataset.echoFilter;
-      toolbar.querySelectorAll("[data-echo-filter]").forEach((btn) => {
-        btn.setAttribute("aria-pressed", btn === target ? "true" : "false");
-      });
-      clearSelection();
-      syncPins();
-      return;
-    }
-
-    if (target.matches("[data-echo-toggle-pins]")) {
-      pinsVisible = !pinsVisible;
-      target.setAttribute("aria-pressed", pinsVisible ? "true" : "false");
-      target.textContent = pinsVisible ? "Hide pins" : "Show pins";
-      if (!pinsVisible) clearSelection();
-      syncPins();
-      return;
-    }
-
-    if (target.matches("[data-echo-toggle-more]")) {
-      showSecondary = !showSecondary;
-      target.setAttribute("aria-pressed", showSecondary ? "true" : "false");
-      target.textContent = showSecondary ? "Show fewer components" : "Explore more components";
-      syncPins();
-    }
+    pinsVisible = !pinsVisible;
+    target.setAttribute("aria-pressed", pinsVisible ? "true" : "false");
+    target.textContent = pinsVisible ? "Hide pins" : "Show pins";
+    if (!pinsVisible) clearSelection();
+    syncPins();
   });
 
   infoCard?.addEventListener("click", (event) => {
@@ -259,10 +261,7 @@
       selectHotspot(item.dataset.drawerId);
       return;
     }
-    if (event.target.closest("[data-echo-drawer-close]")) {
-      drawer.dataset.open = "false";
-      clearSelection();
-    }
+    if (event.target.closest("[data-echo-drawer-close]")) clearSelection();
   });
 
   const markMissing = () => {
@@ -278,7 +277,7 @@
     viewer.classList.remove("is-missing-model");
     if (status) {
       status.textContent =
-        "Drag to orbit · scroll or pinch to zoom · tap a pin for component details. Pin positions are editable in js/echo-hotspots.js.";
+        "Four subsystem pins · tap to inspect components · edit positions in js/echo-hotspots.js.";
     }
   });
 
@@ -287,6 +286,8 @@
       if (!response.ok) markMissing();
     })
     .catch(markMissing);
+
+  if (morePanel) morePanel.hidden = true;
 
   setAutoRotate();
   reducedMotion.addEventListener("change", setAutoRotate);
