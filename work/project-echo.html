@@ -1,0 +1,681 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Project ECHO — Campbell Downs</title>
+    <meta
+      name="description"
+      content="Project ECHO: a lower-cost agricultural aerial imaging drone developed through system requirements, propulsion trade studies, CAD, and structural analysis."
+    />
+    <link rel="canonical" href="https://www.campbelldowns.com/work/project-echo.html" />
+    <meta property="og:url" content="https://www.campbelldowns.com/work/project-echo.html" />
+    <meta property="og:title" content="Project ECHO — Campbell Downs" />
+    <meta
+      property="og:description"
+      content="Low-cost agricultural survey drone: endurance, cost, and image-quality trade studies with airframe CAD and structural analysis."
+    />
+    <link rel="icon" href="../assets/favicon.svg" type="image/svg+xml" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Instrument+Serif&family=Source+Sans+3:wght@400;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="../css/styles.css?v=728e6b76" />
+  </head>
+  <body>
+    <a class="skip" href="#main">Skip to content</a>
+    <header class="site-header">
+      <div class="wrap header-inner">
+        <a class="mark" href="../index.html">
+          <span class="mark-id">CD-05</span>
+          <span class="mark-name">Campbell Downs</span>
+        </a>
+        <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav">Menu</button>
+        <nav class="nav" id="site-nav">
+          <a href="../index.html#work" aria-current="page">Work</a>
+          <a href="../index.html#about">Profile</a>
+          <a href="../resume.html">Resume</a>
+          <a href="../index.html#contact">Contact</a>
+        </nav>
+      </div>
+    </header>
+
+    <header class="wrap page-title">
+      <span class="num">Project 05 · Systems Engineering</span>
+      <h1>Project ECHO</h1>
+      <p class="echo-subtitle">Low-Cost Agricultural Survey Drone</p>
+      <p>
+        Developing an affordable aerial imaging platform through system-level optimization of
+        endurance, cost, structure, propulsion, and sensing capability.
+      </p>
+      <p class="echo-role">
+        Aerospace Engineering Lead — Structures, Airframe Design &amp; System Optimization
+      </p>
+      <div class="tags">
+        <span class="tag">SolidWorks</span>
+        <span class="tag">FEA</span>
+        <span class="tag">MATLAB / Python</span>
+        <span class="tag">Systems Optimization</span>
+        <span class="tag">2026–Present</span>
+      </div>
+    </header>
+
+    <figure class="hero-figure">
+      <img
+        src="../assets/images/project-echo/hero-render.svg"
+        alt="Placeholder for Project ECHO hero CAD render. Replace with assets/images/project-echo/hero-render.jpg"
+        width="1600"
+        height="1000"
+      />
+      <figcaption>
+        Hero CAD render placeholder — replace with
+        <code>assets/images/project-echo/hero-render.jpg</code>
+      </figcaption>
+    </figure>
+
+    <main id="main">
+      <section class="section echo-objectives-section" aria-label="Primary objectives">
+        <div class="wrap">
+          <div class="echo-objectives">
+            <article class="card echo-objective">
+              <span class="num">Maximize</span>
+              <h2>Flight Endurance</h2>
+              <p>Extend useful survey time while carrying the required sensing and power hardware.</p>
+            </article>
+            <article class="card echo-objective">
+              <span class="num">Reduce</span>
+              <h2>System Cost</h2>
+              <p>Treat component cost as a design variable, not an afterthought.</p>
+            </article>
+            <article class="card echo-objective">
+              <span class="num">Maintain</span>
+              <h2>Useful Image Quality</h2>
+              <p>Keep imaging capable enough for agricultural analysis without overspecifying sensors.</p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="section" id="problem">
+        <div class="wrap">
+          <div class="section-head">
+            <h2>01 — The Problem</h2>
+            <p>Accessible aerial crop-health data for smaller farms.</p>
+          </div>
+          <div class="split">
+            <article class="card">
+              <h3>Mission need</h3>
+              <p>
+                Project ECHO is a multidisciplinary engineering project focused on developing a
+                lower-cost aerial imaging platform for agricultural surveying. The system is being
+                designed for smaller farms that could benefit from aerial crop-health data but may
+                not be able to justify the cost of existing commercial agricultural drone systems.
+              </p>
+            </article>
+            <article class="card">
+              <h3>Design approach</h3>
+              <p>
+                Instead of optimizing the aircraft around a single performance metric, the project
+                focuses on balancing endurance, cost, image quality, structural performance, and
+                subsystem compatibility.
+              </p>
+              <p>
+                Aerospace, electrical, and software engineering develop the aircraft, sensing
+                system, and supporting analysis tools as a complete system rather than optimizing
+                each component independently.
+              </p>
+            </article>
+          </div>
+          <ol class="echo-flow" aria-label="Engineering process">
+            <li>Requirements</li>
+            <li>Trade studies</li>
+            <li>Optimization</li>
+            <li>CAD</li>
+            <li>FEA</li>
+            <li>Manufacturing</li>
+            <li>Flight testing</li>
+            <li>Validation</li>
+          </ol>
+        </div>
+      </section>
+
+      <section class="section" id="requirements">
+        <div class="wrap">
+          <div class="section-head">
+            <h2>02 — Engineering Requirements</h2>
+            <p>Requirements first — components later.</p>
+          </div>
+          <p class="echo-lede">
+            The project began by defining system requirements rather than immediately selecting
+            motors, propellers, batteries, or sensors.
+          </p>
+          <div class="echo-req-grid">
+            <article class="card">
+              <span class="num">Endurance</span>
+              <h3>Useful survey time</h3>
+              <p>
+                The aircraft should maximize useful survey time while carrying the required sensing,
+                navigation, propulsion, and power hardware.
+              </p>
+            </article>
+            <article class="card">
+              <span class="num">Cost</span>
+              <h3>Affordable platform</h3>
+              <p>
+                Component cost is treated as a design variable rather than an afterthought. The
+                objective is a significantly more affordable agricultural survey platform than many
+                existing specialized systems.
+              </p>
+            </article>
+            <article class="card">
+              <span class="num">Imaging</span>
+              <h3>RGB + NIR capability</h3>
+              <p>
+                The aircraft is being designed around RGB and near-infrared imaging capable of
+                supporting vegetation analysis such as NDVI while avoiding unnecessarily expensive
+                commercial multispectral systems.
+              </p>
+            </article>
+            <article class="card">
+              <span class="num">Payload</span>
+              <h3>Integrated packaging</h3>
+              <p>
+                Camera, flight controller, GPS, compass, battery, power electronics, storage
+                hardware, and structure must integrate without unacceptable center-of-gravity,
+                packaging, weight, or serviceability issues.
+              </p>
+            </article>
+            <article class="card echo-req-wide">
+              <span class="num">Regulatory</span>
+              <h3>Small-UAS operating context</h3>
+              <p>
+                The planned system and operating concept are being developed with FAA small-UAS
+                operating requirements in mind. Exact compliance claims are reserved until the
+                aircraft configuration and operating procedures are finalized.
+              </p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="section" id="architecture">
+        <div class="wrap">
+          <div class="section-head">
+            <h2>03 — System Architecture</h2>
+            <p>Major subsystems of the aircraft.</p>
+          </div>
+          <p class="echo-lede">
+            Image data is intended to be stored onboard for later processing. The current concept
+            does not require onboard image processing or live image streaming.
+          </p>
+          <div class="echo-arch" role="img" aria-label="System architecture diagram of Project ECHO subsystems">
+            <svg viewBox="0 0 1000 420" xmlns="http://www.w3.org/2000/svg" class="echo-arch-svg">
+              <title>Project ECHO system architecture</title>
+              <rect class="echo-arch-frame" x="20" y="20" width="960" height="380" rx="18" />
+              <text class="echo-arch-title" x="500" y="58">Aircraft system</text>
+
+              <g class="echo-arch-node" transform="translate(70 100)">
+                <rect width="180" height="70" rx="12" />
+                <text x="90" y="30">Airframe / Structure</text>
+                <text class="echo-arch-sub" x="90" y="50">Stiffness · mass · CG</text>
+              </g>
+              <g class="echo-arch-node" transform="translate(280 100)">
+                <rect width="180" height="70" rx="12" />
+                <text x="90" y="30">Motors</text>
+                <text class="echo-arch-sub" x="90" y="50">Propulsion drive</text>
+              </g>
+              <g class="echo-arch-node" transform="translate(490 100)">
+                <rect width="180" height="70" rx="12" />
+                <text x="90" y="30">Propellers</text>
+                <text class="echo-arch-sub" x="90" y="50">Diameter · pitch</text>
+              </g>
+              <g class="echo-arch-node" transform="translate(700 100)">
+                <rect width="180" height="70" rx="12" />
+                <text x="90" y="30">ESCs</text>
+                <text class="echo-arch-sub" x="90" y="50">Power electronics</text>
+              </g>
+
+              <g class="echo-arch-node" transform="translate(70 210)">
+                <rect width="180" height="70" rx="12" />
+                <text x="90" y="30">Battery</text>
+                <text class="echo-arch-sub" x="90" y="50">Energy · mass · cost</text>
+              </g>
+              <g class="echo-arch-node" transform="translate(280 210)">
+                <rect width="180" height="70" rx="12" />
+                <text x="90" y="30">Flight controller</text>
+                <text class="echo-arch-sub" x="90" y="50">Control · sensors</text>
+              </g>
+              <g class="echo-arch-node" transform="translate(490 210)">
+                <rect width="180" height="70" rx="12" />
+                <text x="90" y="30">GPS / Compass</text>
+                <text class="echo-arch-sub" x="90" y="50">Navigation</text>
+              </g>
+              <g class="echo-arch-node" transform="translate(700 210)">
+                <rect width="180" height="70" rx="12" />
+                <text x="90" y="30">Onboard storage</text>
+                <text class="echo-arch-sub" x="90" y="50">Image data logging</text>
+              </g>
+
+              <g class="echo-arch-node echo-arch-focus" transform="translate(280 310)">
+                <rect width="400" height="60" rx="12" />
+                <text x="200" y="25">RGB + NIR imaging system</text>
+                <text class="echo-arch-sub" x="200" y="45">Vegetation analysis support (e.g. NDVI)</text>
+              </g>
+            </svg>
+          </div>
+          <ul class="echo-arch-list">
+            <li>Airframe / Structure</li>
+            <li>Motors</li>
+            <li>Propellers</li>
+            <li>ESCs</li>
+            <li>Battery</li>
+            <li>Flight controller</li>
+            <li>GPS / Compass</li>
+            <li>RGB + NIR imaging</li>
+            <li>Onboard data storage</li>
+          </ul>
+        </div>
+      </section>
+
+      <section class="section" id="optimization">
+        <div class="wrap">
+          <div class="section-head">
+            <h2>04 — System Optimization</h2>
+            <p>Coupled endurance, mass, propulsion, and cost.</p>
+          </div>
+          <div class="split">
+            <article class="card">
+              <h3>Why components cannot be chosen independently</h3>
+              <p>
+                Endurance cannot be optimized by selecting a motor, propeller, battery, or airframe
+                in isolation. A larger battery increases available energy but also aircraft mass.
+                Larger propellers can improve propulsion efficiency while changing motor requirements
+                and geometry. Structural stiffening can improve integrity while adding weight.
+              </p>
+            </article>
+            <article class="card takeaway">
+              <h3>Design principle</h3>
+              <p>
+                The goal is to select the aircraft configuration through quantitative trade studies
+                rather than choosing components individually.
+              </p>
+            </article>
+          </div>
+          <p class="echo-lede" style="margin-top: 1.4rem">
+            An optimization workflow compares real propulsion and battery combinations while
+            accounting for system-level constraints.
+          </p>
+          <div class="echo-vars" aria-label="Optimization variables">
+            <span>Fixed aircraft mass</span>
+            <span>Battery capacity</span>
+            <span>Battery mass</span>
+            <span>Motor characteristics</span>
+            <span>Propeller diameter &amp; pitch</span>
+            <span>ESC requirements</span>
+            <span>Estimated hover power</span>
+            <span>Estimated flight endurance</span>
+            <span>Component compatibility</span>
+            <span>System cost</span>
+          </div>
+          <div class="figure-grid two" style="margin-top: 1.4rem">
+            <figure class="figure echo-slot">
+              <img
+                src="../assets/images/project-echo/optimization-endurance.svg"
+                alt="Placeholder for endurance optimization plot"
+                width="1200"
+                height="900"
+                loading="lazy"
+              />
+              <figcaption>
+                Placeholder — add
+                <code>assets/images/project-echo/optimization-endurance.jpg</code>
+              </figcaption>
+            </figure>
+            <figure class="figure echo-slot">
+              <img
+                src="../assets/images/project-echo/optimization-cost.svg"
+                alt="Placeholder for cost versus endurance plot"
+                width="1200"
+                height="900"
+                loading="lazy"
+              />
+              <figcaption>
+                Placeholder — add
+                <code>assets/images/project-echo/optimization-cost.jpg</code>
+              </figcaption>
+            </figure>
+          </div>
+          <div class="echo-slot-note card">
+            <h3>Plots to insert later</h3>
+            <ul>
+              <li>Optimization / trade-study graphs</li>
+              <li>Component comparison charts</li>
+              <li>Endurance vs. mass</li>
+              <li>Cost vs. endurance</li>
+              <li>Final selected propulsion configuration summary</li>
+            </ul>
+            <p>No numerical results are shown here until analysis outputs are ready.</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="section" id="cad-viewer">
+        <div class="wrap">
+          <div class="section-head">
+            <h2>05 — Explore the Design</h2>
+            <p>Interactive airframe CAD model.</p>
+          </div>
+          <article class="card echo-viewer-intro">
+            <h3>Explore the Current Airframe</h3>
+            <p>Click and drag to inspect the current Project ECHO CAD model. Scroll or pinch to zoom.</p>
+          </article>
+          <div class="echo-viewer-shell">
+            <!--
+              GLB path: ../assets/models/project-echo.glb
+              Hotspot data-position / data-normal values below are placeholders.
+              After exporting the GLB, open this page, enable the model-viewer inspector
+              or trial-and-error adjust each data-position="x y z" (model space meters).
+            -->
+            <model-viewer
+              id="echo-model"
+              class="echo-model"
+              src="../assets/models/project-echo.glb"
+              poster="../assets/images/project-echo/cad-isometric.svg"
+              alt="Interactive 3D CAD model of the Project ECHO agricultural drone airframe"
+              camera-controls
+              touch-action="pan-y"
+              shadow-intensity="0.85"
+              exposure="1"
+              environment-image="neutral"
+              interaction-prompt="auto"
+              loading="lazy"
+              reveal="auto"
+            >
+              <button
+                type="button"
+                class="echo-hotspot"
+                slot="hotspot-propulsion"
+                data-position="0.35 0.05 0.15"
+                data-normal="0 1 0"
+                data-visibility-attribute="visible"
+              >
+                <span class="echo-hotspot-dot" aria-hidden="true"></span>
+                <span class="echo-hotspot-label">
+                  <strong>Propulsion system</strong>
+                  Motor and propeller configuration selected through endurance-focused system trade studies.
+                </span>
+              </button>
+              <button
+                type="button"
+                class="echo-hotspot"
+                slot="hotspot-imaging"
+                data-position="0 0.02 -0.1"
+                data-normal="0 1 0"
+                data-visibility-attribute="visible"
+              >
+                <span class="echo-hotspot-dot" aria-hidden="true"></span>
+                <span class="echo-hotspot-label">
+                  <strong>Imaging payload</strong>
+                  RGB + near-infrared sensing intended to support vegetation analysis such as NDVI.
+                </span>
+              </button>
+              <button
+                type="button"
+                class="echo-hotspot"
+                slot="hotspot-fc"
+                data-position="0 0.08 0"
+                data-normal="0 1 0"
+                data-visibility-attribute="visible"
+              >
+                <span class="echo-hotspot-dot" aria-hidden="true"></span>
+                <span class="echo-hotspot-label">
+                  <strong>Flight controller</strong>
+                  Central flight-control hardware integrating aircraft sensors and control systems.
+                </span>
+              </button>
+              <button
+                type="button"
+                class="echo-hotspot"
+                slot="hotspot-battery"
+                data-position="0 -0.02 0.12"
+                data-normal="0 1 0"
+                data-visibility-attribute="visible"
+              >
+                <span class="echo-hotspot-dot" aria-hidden="true"></span>
+                <span class="echo-hotspot-label">
+                  <strong>Battery system</strong>
+                  Selected by balancing usable energy, mass, current capability, and system cost.
+                </span>
+              </button>
+              <button
+                type="button"
+                class="echo-hotspot"
+                slot="hotspot-airframe"
+                data-position="-0.25 0.04 0"
+                data-normal="0 1 0"
+                data-visibility-attribute="visible"
+              >
+                <span class="echo-hotspot-dot" aria-hidden="true"></span>
+                <span class="echo-hotspot-label">
+                  <strong>Airframe</strong>
+                  Structural layout developed around propulsion geometry, packaging, stiffness, strength, and weight.
+                </span>
+              </button>
+
+              <div class="echo-viewer-fallback" slot="poster">
+                <img
+                  src="../assets/images/project-echo/cad-isometric.svg"
+                  alt=""
+                  width="1200"
+                  height="900"
+                />
+                <p>
+                  Loading 3D model… If nothing appears, add
+                  <code>assets/models/project-echo.glb</code>
+                </p>
+              </div>
+            </model-viewer>
+            <p class="echo-viewer-note" data-echo-model-status>
+              Model file expected at <code>assets/models/project-echo.glb</code>. Until that file is
+              present, the isometric poster above is shown.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <section class="section" id="mechanical">
+        <div class="wrap">
+          <div class="section-head">
+            <h2>06 — Mechanical Design</h2>
+            <p>Complete-assembly CAD for packaging and structure.</p>
+          </div>
+          <article class="card">
+            <p>
+              The aircraft is modeled as a complete assembly to evaluate structural geometry,
+              component packaging, accessibility, propulsion clearances, and center-of-mass
+              placement before manufacturing.
+            </p>
+            <p>
+              The CAD model is intended to serve as the basis for structural simulation and physical
+              prototyping. As propulsion and electrical configurations are refined, the airframe can
+              be updated for motor size, propeller diameter, battery dimensions, electronics
+              placement, and sensor configuration.
+            </p>
+          </article>
+          <div class="figure-grid" style="margin-top: 1.4rem">
+            <figure class="figure echo-slot">
+              <img src="../assets/images/project-echo/cad-isometric.svg" alt="Placeholder isometric CAD view" width="1200" height="900" loading="lazy" />
+              <figcaption>1 · Isometric — <code>cad-isometric.jpg</code></figcaption>
+            </figure>
+            <figure class="figure echo-slot">
+              <img src="../assets/images/project-echo/cad-top.svg" alt="Placeholder top CAD view" width="1200" height="900" loading="lazy" />
+              <figcaption>2 · Top view — <code>cad-top.jpg</code></figcaption>
+            </figure>
+            <figure class="figure echo-slot">
+              <img src="../assets/images/project-echo/cad-exploded.svg" alt="Placeholder exploded assembly" width="1200" height="900" loading="lazy" />
+              <figcaption>3 · Exploded — <code>cad-exploded.jpg</code></figcaption>
+            </figure>
+            <figure class="figure echo-slot">
+              <img src="../assets/images/project-echo/structural-detail.svg" alt="Placeholder structural detail" width="1200" height="900" loading="lazy" />
+              <figcaption>4 · Structural detail — <code>structural-detail.jpg</code></figcaption>
+            </figure>
+            <figure class="figure echo-slot">
+              <img src="../assets/images/project-echo/component-layout.svg" alt="Placeholder internal component layout" width="1200" height="900" loading="lazy" />
+              <figcaption>5 · Component layout — <code>component-layout.jpg</code></figcaption>
+            </figure>
+          </div>
+        </div>
+      </section>
+
+      <section class="section" id="structural">
+        <div class="wrap">
+          <div class="section-head">
+            <h2>07 — Structural Analysis</h2>
+            <p>FEA and modal evaluation before physical testing.</p>
+          </div>
+          <div class="echo-status card">
+            <span class="tag">Analysis in progress</span>
+            <h3>Structural &amp; modal FEA underway</h3>
+            <p>
+              The airframe will be evaluated using structural and modal finite-element analysis to
+              identify stress concentrations, excessive deformation, and potential vibration concerns
+              before physical testing. Results will be published here when validated.
+            </p>
+          </div>
+          <div class="echo-analysis-slots">
+            <div class="card"><span class="num">01</span><h3>Static structural</h3><p>Stress distribution and critical load paths.</p></div>
+            <div class="card"><span class="num">02</span><h3>Displacement</h3><p>Deformation under representative loading.</p></div>
+            <div class="card"><span class="num">03</span><h3>Factor of safety</h3><p>Margins against yield / design allowables.</p></div>
+            <div class="card"><span class="num">04</span><h3>Modal analysis</h3><p>Mode shapes and vibration concerns.</p></div>
+            <div class="card"><span class="num">05</span><h3>Iteration compare</h3><p>Before/after structural design changes.</p></div>
+          </div>
+          <div class="figure-grid" style="margin-top: 1.4rem">
+            <figure class="figure echo-slot">
+              <img src="../assets/images/project-echo/fea-stress.svg" alt="Placeholder for FEA stress plot" width="1200" height="900" loading="lazy" />
+              <figcaption>Stress / FOS — <code>fea-stress.jpg</code></figcaption>
+            </figure>
+            <figure class="figure echo-slot">
+              <img src="../assets/images/project-echo/fea-displacement.svg" alt="Placeholder for FEA displacement plot" width="1200" height="900" loading="lazy" />
+              <figcaption>Displacement — <code>fea-displacement.jpg</code></figcaption>
+            </figure>
+            <figure class="figure echo-slot">
+              <img src="../assets/images/project-echo/modal-analysis.svg" alt="Placeholder for modal analysis" width="1200" height="900" loading="lazy" />
+              <figcaption>Modal — <code>modal-analysis.jpg</code></figcaption>
+            </figure>
+          </div>
+        </div>
+      </section>
+
+      <section class="section" id="multidisciplinary">
+        <div class="wrap">
+          <div class="section-head">
+            <h2>08 — Multidisciplinary Integration</h2>
+            <p>Aerospace decisions constrained by electrical and software needs.</p>
+          </div>
+          <p class="echo-lede">
+            Project ECHO coordinates aerospace/mechanical, electrical, and software disciplines. My
+            primary responsibility is the aerospace/mechanical system, but aircraft decisions must
+            account for requirements from all three areas.
+          </p>
+          <div class="echo-disciplines">
+            <article class="card">
+              <span class="num">Aerospace</span>
+              <ul>
+                <li>Structure</li>
+                <li>Propulsion</li>
+                <li>Mass</li>
+                <li>Aerodynamics</li>
+                <li>Packaging</li>
+              </ul>
+            </article>
+            <div class="echo-discipline-bridge" aria-hidden="true">↔</div>
+            <article class="card">
+              <span class="num">Electrical</span>
+              <ul>
+                <li>Power system</li>
+                <li>Flight controller</li>
+                <li>Sensors</li>
+                <li>Navigation</li>
+                <li>Camera hardware</li>
+              </ul>
+            </article>
+            <div class="echo-discipline-bridge" aria-hidden="true">↔</div>
+            <article class="card">
+              <span class="num">Software</span>
+              <ul>
+                <li>Optimization</li>
+                <li>Data handling</li>
+                <li>Image processing</li>
+                <li>Analysis</li>
+              </ul>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="section" id="roadmap">
+        <div class="wrap">
+          <div class="section-head">
+            <h2>09 — Current Development</h2>
+            <p>Project roadmap from mission definition to validation.</p>
+          </div>
+          <ol class="echo-roadmap">
+            <li data-state="done"><span class="num">01</span><div><strong>Mission definition</strong><p>Problem framing and agricultural survey need.</p></div></li>
+            <li data-state="done"><span class="num">02</span><div><strong>System requirements</strong><p>Endurance, cost, imaging, packaging, operating context.</p></div></li>
+            <li data-state="done"><span class="num">03</span><div><strong>Component research</strong><p>Motors, props, batteries, ESCs, sensing hardware.</p></div></li>
+            <li data-state="active"><span class="num">04</span><div><strong>Propulsion optimization</strong><p>Coupled endurance / cost trade studies in progress.</p></div></li>
+            <li data-state="active"><span class="num">05</span><div><strong>Airframe CAD</strong><p>Assembly model for packaging, CG, and structure.</p></div></li>
+            <li data-state="active"><span class="num">06</span><div><strong>Structural analysis</strong><p>Static and modal FEA in progress.</p></div></li>
+            <li data-state="next"><span class="num">07</span><div><strong>Sensor integration</strong><p>RGB + NIR payload packaging and interfaces.</p></div></li>
+            <li data-state="next"><span class="num">08</span><div><strong>Manufacturing</strong><p>Prototype fabrication — future work.</p></div></li>
+            <li data-state="next"><span class="num">09</span><div><strong>Ground testing</strong><p>Static / systems checkout — future work.</p></div></li>
+            <li data-state="next"><span class="num">10</span><div><strong>Flight testing</strong><p>Flight performance campaigns — future work.</p></div></li>
+            <li data-state="next"><span class="num">11</span><div><strong>Performance validation</strong><p>Compare predictions to measured data.</p></div></li>
+          </ol>
+        </div>
+      </section>
+
+      <section class="section" id="validation">
+        <div class="wrap">
+          <article class="card takeaway">
+            <span class="num">Future validation</span>
+            <h2>Closing the loop with flight-test data</h2>
+            <p>
+              The final phase of Project ECHO will compare predicted endurance, structural
+              performance, and system behavior against physical test data. This will allow the
+              analytical models and optimization workflow to be evaluated against real aircraft
+              performance.
+            </p>
+            <p>
+              The strongest message of this project is not simply building a drone — it is developing
+              the aircraft through requirements, quantitative trade studies, CAD, analysis,
+              multidisciplinary integration, and eventually physical validation.
+            </p>
+            <div class="tags">
+              <span class="tag">Ongoing</span>
+              <span class="tag">Systems engineering</span>
+              <span class="tag">Aerospace lead</span>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <nav class="wrap pager">
+        <a href="pull-up-bar.html"><small>Previous · 04</small>Pull-Up Bar</a>
+        <a href="../index.html#work"><small>Back</small>Selected work</a>
+      </nav>
+    </main>
+
+    <footer class="site-footer">
+      <div class="wrap footer-inner">
+        <span>DWG CD-05 · PROJECT ECHO · SHEET 1</span>
+        <span>© <span data-year></span> Campbell Downs · <span class="host-mark" data-host-mark>.g / .v</span></span>
+      </div>
+    </footer>
+    <script src="../js/site.js?v=5714c710"></script>
+    <script type="module" src="https://ajax.googleapis.com/ajax/libs/model-viewer/3.5.0/model-viewer.min.js"></script>
+    <script src="../js/echo-viewer.js?v=f1286cc0"></script>
+  </body>
+</html>
