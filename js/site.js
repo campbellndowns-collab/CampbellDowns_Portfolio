@@ -81,10 +81,16 @@ if (gallery && dots) {
   const slideHeight = (slide) => {
     const img = slide.querySelector("img");
     if (!img) return 0;
+    const width = slideWidth();
+    const aspectVar = getComputedStyle(slide).getPropertyValue("--photo-aspect").trim();
+    if (aspectVar && aspectVar.includes("/")) {
+      const [aw, ah] = aspectVar.split("/").map((part) => Number(part.trim()));
+      if (aw > 0 && ah > 0) return width * (ah / aw);
+    }
     const naturalW = img.naturalWidth;
     const naturalH = img.naturalHeight;
     if (!naturalW || !naturalH) return 0;
-    return slideWidth() * (naturalH / naturalW);
+    return width * (naturalH / naturalW);
   };
 
   const maxSlideHeight = () => {

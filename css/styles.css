@@ -360,6 +360,10 @@ a {
 .hero-gallery .thumb img {
   width: 100%;
   height: 100%;
+  min-width: 0;
+  min-height: 0;
+  max-width: 100%;
+  max-height: 100%;
   aspect-ratio: auto;
   object-fit: cover;
   object-position: center;
@@ -457,7 +461,7 @@ a {
 }
 
 .photo-mat-echo {
-  --photo-aspect: 1 / 1;
+  --photo-aspect: 1028 / 780;
   --photo-grade: linear-gradient(
     180deg,
     #cfcfcf 0%,
