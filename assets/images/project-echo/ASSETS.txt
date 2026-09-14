@@ -8,7 +8,8 @@ Provided CAD renders (from SolidWorks screenshots):
   cad-front.jpg         Front elevation
   cad-front-iso.jpg     Front-top isometric
   cad-exploded.jpg      Exploded isometric assembly
-  card.jpg              Homepage thumbnail
+  card.jpg              Square CAD thumbnail
+  card-wide.jpg         Homepage / work-card landscape crop
 
 3D model:
   ../../models/project-echo.glb
