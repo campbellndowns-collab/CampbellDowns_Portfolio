@@ -7,10 +7,10 @@ Provided CAD renders (from SolidWorks screenshots):
   cad-top.jpg           Top-down view
   cad-front.jpg         Front elevation
   cad-front-iso.jpg     Front-top isometric
+  cad-exploded.jpg      Exploded isometric assembly
   card.jpg              Homepage thumbnail
 
 Still optional / placeholders:
-  cad-exploded.jpg
   structural-detail.jpg
   component-layout.jpg
   fea-stress.jpg
