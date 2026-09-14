@@ -65,11 +65,9 @@
     <section class="section echo-hero-viewer" aria-label="Interactive Project ECHO CAD model">
       <div class="wrap">
         <p class="echo-hero-viewer-lede">
-          Explore the current airframe — drag to orbit, scroll to zoom, and tap a pin for subsystem
-          details. Pin positions are editable in <code>js/echo-hotspots.js</code>.
+          Explore the current airframe — drag to orbit and scroll or pinch to zoom.
         </p>
         <div class="echo-viewer-shell" data-echo-viewer>
-          <div class="echo-viewer-toolbar" data-echo-toolbar></div>
           <div class="echo-viewer-stage">
             <model-viewer
               id="echo-model"
@@ -100,21 +98,9 @@
                 </p>
               </div>
             </model-viewer>
-            <aside class="echo-info-card" data-echo-info hidden></aside>
-          </div>
-          <div class="echo-more-note" data-echo-more hidden>
-            Four subsystem pins: Imaging System, Batteries, Propulsion System, and Flight Controller.
-          </div>
-          <div class="echo-drawer" data-echo-drawer data-open="false">
-            <div class="echo-drawer-head">
-              <strong>Components</strong>
-              <button type="button" class="echo-chip" data-echo-drawer-close>Close</button>
-            </div>
-            <div class="echo-drawer-list" data-echo-drawer-list></div>
-            <div class="echo-drawer-detail" data-echo-drawer-detail hidden></div>
           </div>
           <p class="echo-viewer-note" data-echo-model-status>
-            Drag to orbit · scroll or pinch to zoom · tap pins for subsystem notes.
+            Drag to orbit · scroll or pinch to zoom.
           </p>
         </div>
       </div>
@@ -364,45 +350,6 @@
             <span>Component compatibility</span>
             <span>System cost</span>
           </div>
-          <div class="figure-grid two" style="margin-top: 1.4rem">
-            <figure class="figure echo-slot">
-              <img
-                src="../assets/images/project-echo/optimization-endurance.svg"
-                alt="Placeholder for endurance optimization plot"
-                width="1200"
-                height="900"
-                loading="lazy"
-              />
-              <figcaption>
-                Placeholder — add
-                <code>assets/images/project-echo/optimization-endurance.jpg</code>
-              </figcaption>
-            </figure>
-            <figure class="figure echo-slot">
-              <img
-                src="../assets/images/project-echo/optimization-cost.svg"
-                alt="Placeholder for cost versus endurance plot"
-                width="1200"
-                height="900"
-                loading="lazy"
-              />
-              <figcaption>
-                Placeholder — add
-                <code>assets/images/project-echo/optimization-cost.jpg</code>
-              </figcaption>
-            </figure>
-          </div>
-          <div class="echo-slot-note card">
-            <h3>Plots to insert later</h3>
-            <ul>
-              <li>Optimization / trade-study graphs</li>
-              <li>Component comparison charts</li>
-              <li>Endurance vs. mass</li>
-              <li>Cost vs. endurance</li>
-              <li>Final selected propulsion configuration summary</li>
-            </ul>
-            <p>No numerical results are shown here until analysis outputs are ready.</p>
-          </div>
         </div>
       </section>
 
@@ -435,7 +382,7 @@
               <figcaption>2 · Top view — X-frame layout and center stack</figcaption>
             </figure>
             <figure class="figure">
-              <img src="../assets/images/project-echo/cad-front.jpg" alt="Front CAD view of Project ECHO" width="2200" height="2200" loading="lazy" />
+              <img src="../assets/images/project-echo/cad-front.jpg?v=tight5" alt="Front CAD view of Project ECHO" width="2200" height="2200" loading="lazy" />
               <figcaption>3 · Front view — mast, packs, and propeller plane</figcaption>
             </figure>
             <figure class="figure">
@@ -443,7 +390,7 @@
               <figcaption>4 · Front-top isometric — packaging overview</figcaption>
             </figure>
             <figure class="figure">
-              <img src="../assets/images/project-echo/cad-exploded.jpg" alt="Exploded isometric CAD assembly of Project ECHO" width="2200" height="2200" loading="lazy" />
+              <img src="../assets/images/project-echo/cad-exploded.jpg?v=tight5" alt="Exploded isometric CAD assembly of Project ECHO" width="2200" height="2200" loading="lazy" />
               <figcaption>5 · Exploded isometric — assembly stack and major subsystems</figcaption>
             </figure>
           </div>
@@ -464,27 +411,6 @@
               identify stress concentrations, excessive deformation, and potential vibration concerns
               before physical testing. Results will be published here when validated.
             </p>
-          </div>
-          <div class="echo-analysis-slots">
-            <div class="card"><span class="num">01</span><h3>Static structural</h3><p>Stress distribution and critical load paths.</p></div>
-            <div class="card"><span class="num">02</span><h3>Displacement</h3><p>Deformation under representative loading.</p></div>
-            <div class="card"><span class="num">03</span><h3>Factor of safety</h3><p>Margins against yield / design allowables.</p></div>
-            <div class="card"><span class="num">04</span><h3>Modal analysis</h3><p>Mode shapes and vibration concerns.</p></div>
-            <div class="card"><span class="num">05</span><h3>Iteration compare</h3><p>Before/after structural design changes.</p></div>
-          </div>
-          <div class="figure-grid" style="margin-top: 1.4rem">
-            <figure class="figure echo-slot">
-              <img src="../assets/images/project-echo/fea-stress.svg" alt="Placeholder for FEA stress plot" width="1200" height="900" loading="lazy" />
-              <figcaption>Stress / FOS — <code>fea-stress.jpg</code></figcaption>
-            </figure>
-            <figure class="figure echo-slot">
-              <img src="../assets/images/project-echo/fea-displacement.svg" alt="Placeholder for FEA displacement plot" width="1200" height="900" loading="lazy" />
-              <figcaption>Displacement — <code>fea-displacement.jpg</code></figcaption>
-            </figure>
-            <figure class="figure echo-slot">
-              <img src="../assets/images/project-echo/modal-analysis.svg" alt="Placeholder for modal analysis" width="1200" height="900" loading="lazy" />
-              <figcaption>Modal — <code>modal-analysis.jpg</code></figcaption>
-            </figure>
           </div>
         </div>
       </section>
@@ -597,7 +523,6 @@
     </footer>
     <script src="../js/site.js?v=5714c710"></script>
     <script type="module" src="https://ajax.googleapis.com/ajax/libs/model-viewer/3.5.0/model-viewer.min.js"></script>
-    <script src="../js/echo-hotspots.js?v=3b66e42e"></script>
-    <script src="../js/echo-viewer.js?v=a77e9eb8"></script>
+    <script src="../js/echo-viewer.js?v=prod014c1"></script>
   </body>
 </html>

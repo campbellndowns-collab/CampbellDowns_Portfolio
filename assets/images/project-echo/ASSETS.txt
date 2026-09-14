@@ -10,17 +10,5 @@ Provided CAD renders (from SolidWorks screenshots):
   cad-exploded.jpg      Exploded isometric assembly
   card.jpg              Homepage thumbnail
 
-Still optional / placeholders:
-  structural-detail.jpg
-  component-layout.jpg
-  fea-stress.jpg
-  fea-displacement.jpg
-  modal-analysis.jpg
-  optimization-endurance.jpg
-  optimization-cost.jpg
-
 3D model:
   ../../models/project-echo.glb
-
-Hotspots:
-  Edit ../../../../js/echo-hotspots.js (position / normal strings)
