@@ -1418,6 +1418,29 @@ a {
   }
 }
 
+.echo-gallery {
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 220px), 1fr));
+  gap: 1.1rem;
+}
+
+.echo-gallery .figure {
+  border: 0;
+  background: transparent;
+  border-radius: 0;
+  box-shadow: none;
+}
+
+.echo-gallery .figure img {
+  aspect-ratio: 1 / 1;
+  object-fit: cover;
+  background: transparent;
+  display: block;
+}
+
+.echo-gallery .figure figcaption {
+  padding: 0.55rem 0 0;
+}
+
 .echo-viewer-intro {
   margin-bottom: 1rem;
 }
