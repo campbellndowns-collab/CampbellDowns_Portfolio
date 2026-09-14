@@ -27,6 +27,7 @@ Nameservers are Vercel (`ns1.vercel-dns.com`, `ns2.vercel-dns.com`). Manage reco
 ## Site map
 
 - `resume.html` — résumé as a page (not a PDF viewer). Source file is `assets/resume.pdf`; after Overleaf edits, replace that PDF. `assets/resume.png` is a static fallback.
+- `work/project-echo.html` — Project ECHO agricultural survey drone case study (ongoing). Place CAD renders in `assets/images/project-echo/` and the interactive model at `assets/models/project-echo.glb`.
 - `work/fitness-rack.html`
 - `work/bike-horn-mount.html`
 - `work/double-wall-mug.html`
