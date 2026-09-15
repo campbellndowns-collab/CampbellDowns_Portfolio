@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Traffic — Campbell Downs</title>
+    <meta name="description" content="Private first-party traffic summary for campbelldowns.com." />
+    <meta name="robots" content="noindex,nofollow" />
+    <meta name="theme-color" content="#0b2a4a" />
+    <link rel="canonical" href="https://www.campbelldowns.com/traffic.html" />
+    <link rel="icon" href="assets/favicon.svg" type="image/svg+xml" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Instrument+Serif&family=Source+Sans+3:wght@400;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="css/styles.css?v=traffic1" />
+  </head>
+  <body>
+    <a class="skip" href="#main">Skip to content</a>
+    <header class="site-header">
+      <div class="wrap header-inner">
+        <a class="mark" href="index.html">
+          <span class="mark-id">CD-TR</span>
+          <span class="mark-name">Campbell Downs</span>
+        </a>
+        <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav">Menu</button>
+        <nav class="nav" id="site-nav">
+          <a href="index.html#work">Work</a>
+          <a href="index.html#about">Profile</a>
+          <a href="resume.html">Resume</a>
+          <a href="index.html#contact">Contact</a>
+        </nav>
+      </div>
+    </header>
+
+    <header class="wrap page-title">
+      <span class="num">Site · Traffic</span>
+      <h1>Traffic</h1>
+      <p>
+        Lightweight first-party pageviews and interactions for this site. No ad
+        pixels, no third-party marketing trackers. Respects Do Not Track.
+      </p>
+    </header>
+
+    <main id="main" class="section" data-traffic>
+      <div class="wrap">
+        <div class="traffic-toolbar">
+          <div class="echo-chip-row" role="group" aria-label="Date range">
+            <button type="button" class="echo-chip" data-traffic-range="7" aria-pressed="false">7 days</button>
+            <button type="button" class="echo-chip" data-traffic-range="30" aria-pressed="true">30 days</button>
+            <button type="button" class="echo-chip" data-traffic-range="90" aria-pressed="false">90 days</button>
+          </div>
+          <p class="traffic-status" data-traffic-status>Loading…</p>
+        </div>
+
+        <div class="traffic-totals" data-traffic-totals></div>
+
+        <section class="traffic-panel card" aria-label="Activity chart">
+          <div class="section-head" style="margin-bottom: 1rem">
+            <h2>Activity</h2>
+            <p>Pageviews (steel) and interactions (ink) by day.</p>
+          </div>
+          <div class="traffic-chart" data-traffic-chart></div>
+        </section>
+
+        <div class="traffic-split">
+          <section class="traffic-panel card">
+            <h2>Top pages</h2>
+            <div data-traffic-pages></div>
+          </section>
+          <section class="traffic-panel card">
+            <h2>Interactions</h2>
+            <div data-traffic-actions></div>
+          </section>
+        </div>
+
+        <article class="card traffic-note">
+          <h2>What gets counted</h2>
+          <ul>
+            <li>Pageviews (once per page per browser tab session / day)</li>
+            <li>Project card and case-study opens</li>
+            <li>Resume, email, and LinkedIn clicks</li>
+            <li>Scroll depth past 50% of a page</li>
+          </ul>
+          <p>
+            Visitor IDs are random browser tokens — not names, emails, or IP
+            addresses. This page is excluded from indexing and from its own
+            pageview counts.
+          </p>
+        </article>
+      </div>
+    </main>
+
+    <footer class="site-footer">
+      <div class="wrap footer-inner">
+        <span>DWG CD-TR · TRAFFIC · SHEET 1</span>
+        <span>© <span data-year></span> Campbell Downs · <span class="host-mark" data-host-mark>.g / .v</span></span>
+      </div>
+    </footer>
+    <script src="js/site.js?v=traffic1"></script>
+    <script src="js/traffic-page.js?v=traffic1"></script>
+  </body>
+</html>
