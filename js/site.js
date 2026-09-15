@@ -275,3 +275,32 @@ document.querySelectorAll(".figure img, .hero-figure img, .thumb img, .work-card
   if (img.complete && img.naturalWidth) apply();
   else img.addEventListener("load", apply, { once: true });
 });
+
+/* First-party traffic + Vercel Web Analytics (when hosted on Vercel). */
+(() => {
+  const onTrafficPage = /traffic\.html$/i.test(location.pathname);
+  if (!onTrafficPage) {
+    const tracker = document.createElement("script");
+    tracker.src = document.querySelector('script[src*="site.js"]')?.src.includes("../")
+      ? "../js/tracker.js?v=traffic1"
+      : "js/tracker.js?v=traffic1";
+    tracker.defer = true;
+    document.head.appendChild(tracker);
+  }
+
+  const hostname = location.hostname || "";
+  const onVercel =
+    /(^|\.)vercel\.(app|sh)$/i.test(hostname) ||
+    /(^|\.)campbelldowns\.com$/i.test(hostname);
+  if (!onVercel) return;
+
+  window.va =
+    window.va ||
+    function () {
+      (window.vaq = window.vaq || []).push(arguments);
+    };
+  const insights = document.createElement("script");
+  insights.defer = true;
+  insights.src = "/_vercel/insights/script.js";
+  document.head.appendChild(insights);
+})();

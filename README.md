@@ -26,9 +26,18 @@ Nameservers are Vercel (`ns1.vercel-dns.com`, `ns2.vercel-dns.com`). Manage reco
 
 ## Site map
 
+- `traffic.html` — first-party traffic dashboard (noindex). Pageviews and key interactions via `/api/traffic`.
 - `resume.html` — résumé as a page (not a PDF viewer). Source file is `assets/resume.pdf`; after Overleaf edits, replace that PDF. `assets/resume.png` is a static fallback.
 - `work/project-echo.html` — Project ECHO agricultural survey drone case study (ongoing). Place CAD renders in `assets/images/project-echo/` and the interactive model at `assets/models/project-echo.glb`.
 - `work/fitness-rack.html`
 - `work/bike-horn-mount.html`
 - `work/double-wall-mug.html`
 - `work/pull-up-bar.html`
+
+## Traffic
+
+The site records lightweight first-party events (pageviews, project opens, resume/email/LinkedIn clicks, 50% scroll). Open `/traffic.html` for the dashboard.
+
+For durable storage on Vercel: Project → Storage → create a **KV** database. That injects `KV_REST_API_URL` and `KV_REST_API_TOKEN`. Until then, events only persist on warm serverless instances.
+
+Optional: enable **Vercel Web Analytics** in the project for the built-in Vercel dashboard (script loads automatically on campbelldowns.com).
